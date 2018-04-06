@@ -43,11 +43,11 @@ class StudentsController < ApplicationController
   end
 
   def search
-    @students = Student.where('family_name LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(5)
+    @students = Student.where('family_name LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(10)
   end
 
   private
-  
+
   def student_params
     params.require(:student).permit(:term, :family_name, :first_name, :family_name_kana, :first_name_kana, :sheet, :detail)
   end

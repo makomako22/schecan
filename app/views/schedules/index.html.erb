@@ -37,7 +37,7 @@
             <% if schedule.checkbox == false %>
             <td id="time"><%= schedule.schedule_at.strftime("%H:%M〜") %></td>
             <% elsif schedule.checkbox == true %>
-            <td><span class="green-text">done</span></td>
+            <td><span class="green-text">面談完了</span></td>
             <% else %>
             <td>-</td>
             <% end %>
