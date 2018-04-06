@@ -1,0 +1,51 @@
+// Place all the styles related to the students controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.form_title {
+  font-weight: bold;
+  color: #c62828;
+  font-size: 30px;
+  text-align: center;
+}
+.form_name {
+  font-size: 20px;
+  text-align: center;
+  }
+.form_wrapper {
+  margin: 50px auto;
+  width: 750px;
+  border: solid 1px;
+  border-radius: 5px;
+}
+#submit{ 
+text-align: center; 
+}
+#submit_button{ 
+  margin: 8px; 
+  a {
+    color: white;
+  }
+}
+.btn-search{
+  position: absolute;
+  font-size: 30px;
+  -webkit-transform:translate(0, -50%);
+  -moz-transform:translate(0, -50%);
+  -ms-transform:translate(0, -50%);
+  -o-transform:translate(0, -50%);
+  transform:translate(0, -50%);
+  top: 25px;
+  right:-10px;
+  text-decoration: none;
+}
+table, td, th {
+border: 1px solid;
+}
+.btn-none {
+  border: none;
+  background-color: transparent;
+  color: #039be5;
+}
+.center_line {
+  text-align: center;
+}

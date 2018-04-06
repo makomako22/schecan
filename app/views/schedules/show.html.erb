@@ -1,0 +1,61 @@
+<div class="form_wrapper wf-roundedmplus1c">
+  <h2 class="form_title">スケジュール詳細</h2>
+  <div class="row">
+    <div class="input-field col s12">
+      <table class="striped centered">
+        <thead>
+          <tr>
+            <th>状態</th>
+            <th>面談日時</th>
+            <th>受講生</th>
+            <th>受講期</th>
+            <th>進捗シート</th>
+            <th>前回担当</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <% if @schedule.checkbox == false %>
+              <span class="red-text">未</span>
+              <% elsif @schedule.checkbox == true %>
+              <span class="green-text">済</span>
+              <% else %>
+              -
+              <% end %>
+            </td>
+            <td><%= @schedule.schedule_at.strftime("%m月%d日 %H:%M〜") %></td>
+            <td><%= link_to @schedule.student.name, student_path(@schedule.student.id) %></td>
+            <td><%= @schedule.student.term %></td>
+            <% if @schedule.student.sheet.present? %>
+            <td><%= link_to "表示する", @schedule.student.sheet, target: "_blank" %></td>
+            <% else %>
+            <td>未登録</td>
+            <% end %>
+            <td><%= @schedule.mentor %></td>
+          </tr>
+        </tbody>
+        <thead>
+          <tr>
+            <th colspan="8">メモ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% if @schedule.memo.present? %>
+            <td colspan="8" class="text-left"><%= @schedule.memo %></td>
+            <% else %>
+            <td colspan="8">なし</td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="submit">
+    <div id="submit_button" class="waves-effect waves-light red btn">
+      <%= link_to "戻る", :back %>
+    </div>
+  </div>
+  <br>
+</div>

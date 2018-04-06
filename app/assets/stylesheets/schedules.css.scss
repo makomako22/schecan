@@ -1,0 +1,27 @@
+// Place all the styles related to the schedules controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.nav_w {
+  margin: 0 auto;
+  max-width: 750px;
+}
+.schedule_form {
+  padding-left: 10px;
+}
+.form_result {
+  font-size: 20px;
+  color: green;
+  }
+.text-left {
+  text-align: left;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  
+}
+#footer_container{
+  flex-grow: 1;
+}

@@ -1,0 +1,62 @@
+<div class="form_wrapper wf-roundedmplus1c">
+  <%= form_for(@schedule) do |f| %>
+  <h2 class="form_title">面談日編集</h2>
+  <h3 class="form_name">〜　<%= @schedule.student.name %> 様　〜</h3>
+  <% if flash[:notice] %>
+  <div id="card-alert" class="card green lighten-5">
+    <div class="card-content green-text">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  <% end %>
+  <% if flash[:alert] %>
+  <div id="card-alert" class="card red lighten-5">
+    <div class="card-content red-text">
+      <%= flash[:alert] %>
+    </div>
+  </div>
+  <% end %>
+  <div class="row">
+    <div class="col s12">
+      <div class="row">
+        <div class="col s6">
+          <p>面談状況</p>
+          <div class="switch">
+            <label>
+              未
+              <%= f.check_box :checkbox %>
+              <span class="lever"></span>
+              済
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <p>次回面談日時</p>
+          <%= f.datetime_field :schedule_at, value: @schedule.schedule_at.strftime("%Y-%m-%d %H:%M") %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <%= f.label :"前回担当メンター" %>
+          <%= f.text_field :mentor %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <%= f.label :"メモ" %>
+          <%= f.text_area :memo, class: "materialize-textarea" %>
+        </div>
+      </div>
+      <%= f.hidden_field :student_id %>
+      <div class="row">
+        <div id="submit">
+          <%= f.submit "変更する",id: "submit_button", class: "waves-effect waves-light red btn" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <p class="center_line"><%= link_to "戻る", :back %></p>
+</div>

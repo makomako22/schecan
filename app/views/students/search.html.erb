@@ -1,0 +1,48 @@
+<div class="form_wrapper wf-roundedmplus1c">
+  <h2 class="form_title">受講生検索</h2>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= form_tag('/students/search', method: :get) do %>
+      <input name="keyword" placeholder="性で検索" type="text" value=""><button class="btn-search btn-flat" title="検索" type="submit"><i class="material-icons">search</i></button></input>
+      <% end %>
+      <table class="striped centered">
+        <thead>
+          <tr>
+            <th width="20%">受講期</th>
+            <th>名前</th>
+            <th>進捗シート</th>
+            <th>TM</th>
+            <th>面談日</th>
+            <th>詳細</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @students.each do |student| %>
+          <tr>
+            <td class="table_center"><%= student.term %></td>
+            <td><%= student.name %></td>
+            <% if student.sheet.present? %>
+            <td><%= link_to "表示する", student.sheet, target: "_blank" %></td>
+            <% else %>
+            <td>未登録</td>
+            <% end %>
+            <% if student.detail.present? %>
+            <td><%= link_to "表示する", student.detail, target: "_blank" %></td>
+            <% else %>
+            <td>未登録</td>
+            <% end %>
+            <td><%= form_tag(new_schedule_path, method: :get) do %>
+              <%= hidden_field_tag(:student_id, student.id) %>
+              <%= submit_tag "登録する", class:"btn-none" %>
+              <% end %></td>
+              <td><%= link_to "詳細", student_path(student.id), method: :get %></td>
+              <td><%= link_to "削除", student_path(student.id),method: :delete, data: { confirm: "本当に削除しますか？"} %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate(@students) %>
+      </div>
+    </div>
+  </div>

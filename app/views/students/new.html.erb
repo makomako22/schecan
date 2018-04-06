@@ -1,0 +1,53 @@
+<div class="form_wrapper wf-roundedmplus1c">
+  <%= form_for(@student) do |f| %>
+  <h2 class="form_title">新規受講生登録</h2>
+  <p class="center_line">※「＊」は必須項目</p>
+  <div class="row">
+    <div class="col s12">
+      <div class="row">
+        <div class="col s5">
+          <!--           <%= f.label :"＊受講期" %> -->
+          <%= f.select :term, [["第56期 2/1(木) 〜 2/28(水)","56"],["第57期 2/16(金) 〜 3/16(金)","57"],["第58期 3/1(木) 〜 3/31(土)","58"],["第59期 3/16(金) 〜 4/15(日)","59"],["第60期 4/1(日) 〜 4/30(月)","60"],["第61期 4/16(月) 〜 5/15(火)","61"],["第62期 5/1(火) 〜 5/31(木)","62"]], { prompt: '選択してください' }, {class: "browser-default"} %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <%= f.label :"＊性(漢字)" %>
+          <%= f.text_field :family_name, class: "validate" %>
+        </div>
+        <div class="input-field col s6">
+          <%= f.label :"＊名(漢字)" %>
+          <%= f.text_field :first_name, class: "validate" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <%= f.label :"＊性(カナ)" %>
+          <%= f.text_field :family_name_kana %>
+        </div>
+        <div class="input-field col s6">
+          <%= f.label :"＊名(カナ)" %>
+          <%= f.text_field :first_name_kana %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.label :"進捗シートリンク" %>
+          <%= f.text_field :sheet %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.label :"Tech::masterリンク" %>
+          <%= f.text_field :detail %>
+        </div>
+      </div>
+      <div class="row">
+        <div id="submit">
+          <%= f.submit "送信",id: "submit_button", class: "waves-effect waves-light red btn" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
