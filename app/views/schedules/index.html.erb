@@ -119,6 +119,7 @@
   <hr>
   <h2 class="form_title">明日以降の面談予定</h2>
   <p class="center_line">メンターが足りない日を確認しておきましょう。</p>
+  <% if @schedules.present? %>
   <div class="row">
     <div class="input-field col s12">
       <table class="striped centered">
@@ -156,5 +157,12 @@
       <%= paginate(@schedules) %>
     </div>
   </div>
+  <% else %>
+  <div class="row">
+    <div class="input-field col s12">
+      <p class="center_line form_result">明日以降の面談予定はありません。</p>
+    </div>
+  </div>
+  <% end %>
 </div>
 
