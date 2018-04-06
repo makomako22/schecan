@@ -1,6 +1,4 @@
 <div class="form_wrapper wf-roundedmplus1c">
-  <h2 class="form_title"><%= @today.strftime("%-m月%-d日") %>の面談予定</h2>
-  <p class="center_line">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
   <% if flash[:notice] %>
   <div id="card-alert" class="card green lighten-5">
     <div class="card-content green-text">
@@ -15,6 +13,8 @@
     </div>
   </div>
   <% end %>
+  <h2 class="form_title"><%= @today.strftime("%-m月%-d日") %>の面談予定</h2>
+  <p class="center_line">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
   <% if @today_schedules.present? %>
   <div class="row">
     <div class="input-field col s12">
