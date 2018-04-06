@@ -24,7 +24,7 @@
               -
               <% end %>
             </td>
-            <td><%= @schedule.schedule_at.strftime("%m月%d日 %H:%M〜") %></td>
+            <td><%= @schedule.schedule_at.strftime("%-m月%-d日 %H:%M〜") %></td>
             <td><%= link_to @schedule.student.name, student_path(@schedule.student.id) %></td>
             <td><%= @schedule.student.term %></td>
             <% if @schedule.student.sheet.present? %>
