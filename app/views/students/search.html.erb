@@ -13,15 +13,13 @@
             <th>進捗シート</th>
             <th>TM</th>
             <th>面談日</th>
-            <th>詳細</th>
-            <th>削除</th>
           </tr>
         </thead>
         <tbody>
           <% @students.each do |student| %>
           <tr>
             <td class="table_center"><%= student.term %></td>
-            <td><%= student.name %></td>
+            <td><%= link_to student.name, student_path(student.id) %></td>
             <% if student.sheet.present? %>
             <td><%= link_to "表示する", student.sheet, target: "_blank" %></td>
             <% else %>
@@ -35,9 +33,7 @@
             <td><%= form_tag(new_schedule_path, method: :get) do %>
               <%= hidden_field_tag(:student_id, student.id) %>
               <%= submit_tag "登録する", class:"btn-none" %>
-              <% end %></td>
-              <td><%= link_to "詳細", student_path(student.id), method: :get %></td>
-              <td><%= link_to "削除", student_path(student.id),method: :delete, data: { confirm: "本当に削除しますか？"} %></td>
+              <% end %></td></td>
             </tr>
             <% end %>
           </tbody>

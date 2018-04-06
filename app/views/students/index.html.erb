@@ -9,8 +9,8 @@
             <th>受講期</th>
             <th>名前</th>
             <th>進捗シート</th>
-            <th>面談日</th>
             <th>TM</th>
+            <th>面談日</th>
           </tr>
         </thead>
         <tbody>
@@ -23,15 +23,15 @@
             <% else %>
             <td>未登録</td>
             <% end %>
-            <td><%= form_tag(new_schedule_path, method: :get) do %>
-              <%= hidden_field_tag(:student_id, student.id) %>
-              <%= submit_tag "登録する", class:"btn-none" %>
-              <% end %></td>
-              <% if student.detail.present? %>
+            <% if student.detail.present? %>
               <td><%= link_to "表示する", student.detail, target: "_blank" %></td>
-              <% else %>
+            <% else %>
               <td>未登録</td>
-              <% end %>
+            <% end %>
+              <td><%= form_tag(new_schedule_path, method: :get) do %>
+              <%= hidden_field_tag(:student_id, student.id) %>
+              <%= submit_tag "登録する", class:"btn-none" %></td>
+            <% end %>
             </tr>
             <% end %>
           </tbody>
