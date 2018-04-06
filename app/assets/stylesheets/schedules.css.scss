@@ -14,7 +14,8 @@
   color: green;
   }
 .text-left {
-  text-align: left;
+  text-align: left!important;
+  margin-left: 10px!important;
 }
 body {
   display: flex;

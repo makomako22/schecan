@@ -33,7 +33,7 @@
             <td><%= @student.term %></td>
             <td><%= @student.name %>（<%= @student.name_kana %>）</td>
             <% if @student.sheet.present? %>
-            <td><%= link_to "進捗シート", @student.sheet, target: "_blank" %></td>
+            <td><%= link_to "表示する", @student.sheet, target: "_blank" %></td>
             <% else %>
             <td>未登録</td>
             <% end %>
