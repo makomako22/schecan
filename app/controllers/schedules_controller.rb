@@ -5,7 +5,7 @@ class SchedulesController < ApplicationController
     afterDay = @today + 1.day
     @today_schedules = Schedule.includes(:student).where("schedule_at >= ?", @today).where("schedule_at < ?", afterDay).order('schedule_at ASC').page(params[:page]).per(10)
     @undo_schedules = Schedule.includes(:student).where("schedule_at < ?", @today).where(checkbox: 0).order('schedule_at ASC').page(params[:page]).per(10)
-    @schedules = Schedule.includes(:student).where("schedule_at >= ?", afterDay).order('schedule_at ASC').page(params[:page]).per(10)
+    @schedules = Schedule.includes(:student).where("schedule_at >= ?", afterDay).order('schedule_at ASC')
   end
 
   def show
