@@ -24,7 +24,7 @@ class SchedulesController < ApplicationController
     if @schedule.save
       redirect_to root_path, notice: "登録が完了しました"
     else
-      redirect_to :back, alert: "同じ日時がすでに登録されています"
+      redirect_to :back, alert: "同じ日時がすでに登録されているか、必須項目が入力されていません"
     end
   end
 
