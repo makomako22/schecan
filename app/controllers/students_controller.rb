@@ -18,7 +18,8 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to students_path, notice: "登録が完了しました"
     else
-      render :new, alert: "必須項目を入力してください"
+      flash[:alert] = "必須項目が入力されていません"
+      render :new
     end
   end
 
@@ -30,9 +31,10 @@ class StudentsController < ApplicationController
     student = Student.find(params[:id])
     @student = Student.find(params[:id])
     if student.update(student_params)
-    redirect_to student_path(student.id), notice: "編集が完了しました"
+      redirect_to student_path(student.id), notice: "編集が完了しました"
     else
-      redirect_to :back, alert: "必須項目を入力してください"
+      flash[:alert] = "必須項目が入力されていません"
+      render :edit
     end
   end
 

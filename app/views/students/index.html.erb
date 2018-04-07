@@ -2,6 +2,20 @@
 <div class="student_wrapper wf-roundedmplus1c">
   <h2 class="form_title">受講生一覧</h2>
   <p class="center_line">名前をクリックすると詳細が表示されます。</p>
+  <% if flash[:notice] %>
+  <div id="card-alert" class="card green lighten-5">
+    <div class="card-content green-text">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  <% end %>
+  <% if flash[:alert] %>
+  <div id="card-alert" class="card red lighten-5">
+    <div class="card-content red-text">
+      <%= flash[:alert] %>
+    </div>
+  </div>
+  <% end %>
   <div class="row">
     <div class="input-field col s12">
       <table class="striped centered">
