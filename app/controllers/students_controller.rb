@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      redirect_to student_path, notice: "登録が完了しました"
+      redirect_to students_path, notice: "登録が完了しました"
     else
       render :new, alert: "必須項目を入力してください"
     end
