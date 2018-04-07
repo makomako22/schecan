@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta http-equiv="content-language" content="ja">
-  <title>Schecan</title>
+  <title>SCHE::CAN<%= yield :title %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,7 +12,7 @@
 <body>
   <nav class="red wf-roundedmplus1c">
     <div class="nav_w">
-      <a href="/" class="brand-logo">Schecan</a>
+      <a href="/" class="brand-logo"><%= image_tag "logo.svg" %></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><%= link_to "面談日一覧", schedules_path %></li>
         <li><%= link_to "受講生一覧", students_path %></li>
@@ -27,7 +27,7 @@
     <div class="nav_w">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Schecan</h5>
+          <h5><%= image_tag "logo.svg" %></h5>
           <p class="grey-text text-lighten-4">面談日をしっかり把握し、最高のメンタリングを。</p>
         </div>
         <div class="col l4 offset-l2 s12">
