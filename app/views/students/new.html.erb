@@ -3,6 +3,21 @@
   <%= form_for(@student) do |f| %>
   <h2 class="form_title">新規受講生登録</h2>
   <p class="center_line">※「＊」は必須項目</p>
+  <% if flash[:notice] %>
+  <div id="card-alert" class="card green lighten-5">
+    <div class="card-content green-text">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  <% end %>
+  <% if flash[:alert] %>
+  <div id="card-alert" class="card red lighten-5">
+    <div class="card-content red-text">
+      <%= flash[:alert] %>
+    </div>
+  </div>
+  <% end %>
+
   <div class="row">
     <div class="col s12">
       <div class="row">
