@@ -5687,7 +5687,7 @@ button.btn-floating {
 
 .modal.modal-fixed-footer {
   padding: 0;
-  height: 70%;
+  height: 30%;
 }
 
 .modal.modal-fixed-footer .modal-content {
@@ -5709,7 +5709,7 @@ button.btn-floating {
   bottom: -100%;
   margin: 0;
   width: 100%;
-  max-height: 45%;
+  min-height: 45%;
   border-radius: 0;
   will-change: bottom, opacity;
 }

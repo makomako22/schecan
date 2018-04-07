@@ -26,7 +26,7 @@
             <th>受講期</th>
             <th>進捗シート</th>
             <th>前回担当</th>
-            <th>詳細</th>
+            <th>メモ</th>
             <th>編集</th>
             <th>削除</th>
           </tr>
@@ -49,7 +49,11 @@
             <td>未登録</td>
             <% end %>
             <td><%= schedule.mentor %></td>
-            <td><%= link_to "詳細", schedule_path(schedule.id) %></td>
+            <% if schedule.memo.present? %>
+              <td><%= link_to "あり", schedule_path(schedule.id) %></td>
+            <% else %>
+              <td>なし</td>
+            <% end %>
             <td><%= link_to "編集", edit_schedule_path(schedule.id) %></td>
             <td><%= link_to "削除", schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"} %></td>
           </tr>
@@ -81,7 +85,7 @@
             <th>受講期</th>
             <th>進捗シート</th>
             <th>前回担当</th>
-            <th>詳細</th>
+            <th>メモ</th>
             <th>編集</th>
             <th>削除</th>
           </tr>
@@ -98,7 +102,11 @@
             <td>未登録</td>
             <% end %>
             <td><%= schedule.mentor %></td>
-            <td><%= link_to "詳細", schedule_path(schedule.id) %></td>
+            <% if schedule.memo.present? %>
+              <td><%= link_to "あり", schedule_path(schedule.id) %></td>
+            <% else %>
+              <td>なし</td>
+            <% end %>
             <td><%= link_to "編集", edit_schedule_path(schedule.id) %></td>
             <td><%= link_to "削除", schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"} %></td>
           </tr>
@@ -130,7 +138,7 @@
             <th>受講期</th>
             <th>進捗シート</th>
             <th>前回担当</th>
-            <th>詳細</th>
+            <th>メモ</th>
             <th>編集</th>
             <th>削除</th>
           </tr>
@@ -147,7 +155,11 @@
             <td>未登録</td>
             <% end %>
             <td><%= schedule.mentor %></td>
-            <td><%= link_to "詳細", schedule_path(schedule.id) %></td>
+            <% if schedule.memo.present? %>
+              <td><%= link_to "あり", schedule_path(schedule.id) %></td>
+            <% else %>
+              <td>なし</td>
+            <% end %>
             <td><%= link_to "編集", edit_schedule_path(schedule.id) %></td>
             <td><%= link_to "削除", schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"} %></td>
           </tr>

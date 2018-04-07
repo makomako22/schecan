@@ -1,14 +1,16 @@
-<div class="form_wrapper wf-roundedmplus1c">
+<div class="student_wrapper wf-roundedmplus1c">
   <h2 class="form_title">受講生検索</h2>
+  <p class="center_line">名前をクリックすると詳細が表示されます。</p>
   <div class="row">
     <div class="input-field col s12">
       <%= form_tag('/students/search', method: :get) do %>
       <input name="keyword" placeholder="性で検索" type="text" value=""><button class="btn-search btn-flat" title="検索" type="submit"><i class="material-icons">search</i></button></input>
       <% end %>
+      <% if @students.present? %>
       <table class="striped centered">
         <thead>
           <tr>
-            <th width="20%">受講期</th>
+            <th>受講期</th>
             <th>名前</th>
             <th>進捗シート</th>
             <th>TM</th>
@@ -39,6 +41,9 @@
           </tbody>
         </table>
         <%= paginate(@students) %>
+        <% else %>
+        <p>該当する受講生はいません。</p>
+        <% end %>
       </div>
     </div>
   </div>

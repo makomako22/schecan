@@ -1,4 +1,4 @@
-<div class="form_wrapper wf-roundedmplus1c">
+<div class="student_wrapper wf-roundedmplus1c">
   <% if flash[:notice] %>
   <div id="card-alert" class="card green lighten-5">
     <div class="card-content green-text">
@@ -84,9 +84,9 @@
               <td><%= schedule.schedule_at.strftime("%m月%d日 %H時%M分") %>〜</td>
               <td><%= schedule.mentor %></td>
               <% if schedule.memo.present? %>
-              <td><%= schedule.memo.truncate(15) %></td>
+                <td><%= link_to "あり", schedule_path(schedule.id) %></td>
               <% else %>
-              <td>なし</td>
+                <td>なし</td>
               <% end %>
               <td><%= link_to "詳細", schedule_path(schedule.id) %></td>
               <td><%= link_to "編集", edit_schedule_path(schedule.id) %></td>
