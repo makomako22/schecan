@@ -22,8 +22,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     @schedule.checkbox = 0
     if @schedule.save
-      flash.now[:notice] = "登録が完了しました"
-      redirect_to root_path
+      redirect_to root_path, notice: "登録が完了しました"
     else
       flash.now[:alert] = "同じ日時がすでに登録されているか、必須項目が入力されていません"
       render :new
@@ -38,8 +37,7 @@ class SchedulesController < ApplicationController
     schedule = Schedule.find(params[:id])
     @schedule = Schedule.find(params[:id])
     if schedule.update(schedule_params)
-      flash.now[:notice] = "変更が完了しました"
-      redirect_to root_path
+      redirect_to root_path, notice: "変更が完了しました"
     else
       flash.now[:alert] = "同じ日時がすでに登録されているか、必須項目が入力されていません"
       render :edit
@@ -49,8 +47,7 @@ class SchedulesController < ApplicationController
   def destroy
     schedule = Schedule.find(params[:id])
     schedule.destroy
-    flash.now[:notice] = "削除が完了しました"
-    redirect_to root_path
+    redirect_to root_path, notice: "削除が完了しました"
   end
 
   private

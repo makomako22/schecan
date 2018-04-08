@@ -16,8 +16,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      flash.now[:notice] = "登録が完了しました"
-      redirect_to students_path
+      redirect_to students_path, notice: "登録が完了しました"
     else
       flash.now[:alert] = "必須項目が入力されていません"
       render :new
@@ -32,8 +31,7 @@ class StudentsController < ApplicationController
     student = Student.find(params[:id])
     @student = Student.find(params[:id])
     if student.update(student_params)
-      flash.now[:notice] = "編集が完了しました"
-      redirect_to student_path(student.id)
+      redirect_to student_path(student.id), notice: "編集が完了しました"
     else
       flash.now[:alert] = "必須項目が入力されていません"
       render :edit
@@ -43,8 +41,7 @@ class StudentsController < ApplicationController
   def destroy
     student = Student.find(params[:id])
     student.destroy
-    flash.now[:notice] = "削除が完了しました"
-    redirect_to students_path
+    redirect_to students_path, notice: "削除が完了しました"
   end
 
   def search
