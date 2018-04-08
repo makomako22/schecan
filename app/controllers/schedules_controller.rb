@@ -26,7 +26,7 @@ class SchedulesController < ApplicationController
       redirect_to root_path
     else
       flash.now[:alert] = "同じ日時がすでに登録されているか、必須項目が入力されていません"
-      redirect_to :back
+      render :new
     end
   end
 
