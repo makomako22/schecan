@@ -13,7 +13,7 @@
     </div>
   </div>
   <% end %>
-  <h2 class="form_title"><%= @today.strftime("%-m月%-d日") %>の面談予定</h2>
+  <h2 class="form_title"><%= @today.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@today.wday]})") %>の面談予定</h2>
   <p class="center_line">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
   <% if @today_schedules.present? %>
   <div class="row">
@@ -93,7 +93,7 @@
         <tbody>
           <% @undo_schedules.each do |schedule| %>
           <tr>
-            <td><%= schedule.schedule_at.strftime("%-m月%d日 %H:%M〜") %></td>
+            <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M〜") %></td>
             <td><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
             <td><%= schedule.student.term %></td>
             <% if schedule.student.sheet.present? %>
@@ -146,7 +146,7 @@
         <tbody>
           <% @schedules.each do |schedule| %>
           <tr>
-            <td><%= schedule.schedule_at.strftime("%-m月%d日 %H:%M〜") %></td>
+            <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M〜") %></td>
             <td><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
             <td><%= schedule.student.term %></td>
             <% if schedule.student.sheet.present? %>

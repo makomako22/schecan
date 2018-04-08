@@ -82,7 +82,7 @@
                 -
                 <% end %>
               </td>
-              <td><%= schedule.schedule_at.strftime("%m月%d日 %H時%M分") %>〜</td>
+              <td><%= schedule.schedule_at.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M〜") %>〜</td>
               <td><%= schedule.mentor %></td>
               <% if schedule.memo.present? %>
                 <td><%= link_to "あり", schedule_path(schedule.id) %></td>
