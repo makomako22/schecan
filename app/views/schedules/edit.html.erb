@@ -2,7 +2,6 @@
 <div class="form_wrapper wf-roundedmplus1c">
   <%= form_for(@schedule) do |f| %>
   <h2 class="form_title">面談日編集</h2>
-  <h3 class="form_name">〜　<%= @schedule.student.name %> 様　〜</h3>
   <% if flash[:notice] %>
   <div id="card-alert" class="card green lighten-5">
     <div class="card-content green-text">

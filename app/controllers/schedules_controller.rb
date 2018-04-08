@@ -36,12 +36,13 @@ class SchedulesController < ApplicationController
 
   def update
     schedule = Schedule.find(params[:id])
+    @schedule = Schedule.find(params[:id])
     if schedule.update(schedule_params)
       flash.now[:notice] = "変更が完了しました"
       redirect_to root_path
     else
       flash.now[:alert] = "同じ日時がすでに登録されているか、必須項目が入力されていません"
-      redirect_to :back
+      render :edit
     end
   end
 
