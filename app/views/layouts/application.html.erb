@@ -10,7 +10,25 @@
   <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 </head>
 <body>
-  <nav class="red wf-roundedmplus1c">
+  <!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+        <li><%= link_to "面談日一覧", schedules_path %></li>
+        <li><%= link_to "受講生一覧", students_path %></li>
+        <li><%= link_to "受講生検索", search_students_path %></li>
+        <li><%= link_to "受講生登録", new_student_path %></li>
+</ul>
+<nav class="red wf-roundedmplus1c">
+    <div class="nav_w">
+    <a href="/" class="brand-logo"><%= image_tag "schecan.svg" %></a>
+    <ul class="right hide-on-med-and-down">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to "面談日一覧", schedules_path %></li>
+      </ul>
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">受講生管理<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </div>
+</nav>
+<!-- <nav class="red wf-roundedmplus1c">
     <div class="nav_w">
       <a href="/" class="brand-logo"><%= image_tag "schecan.svg" %></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -20,7 +38,7 @@
         <li><%= link_to "受講生登録", new_student_path %></li>
       </ul>
     </div>
-  </nav>
+  </nav> -->
   <%= yield %>
   <div id="footer_container"></div>
   <footer class="page-footer">

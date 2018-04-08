@@ -29,3 +29,15 @@ body {
 #footer_container{
   flex-grow: 1;
 }
+.dropdown-content {
+  background-color: #fff;
+  margin-top: 65px;
+  display: none;
+  min-width: 100px;
+  max-height: 650px;
+  overflow-y: auto;
+  opacity: 0;
+  position: absolute;
+  z-index: 999;
+  will-change: width, height;
+}

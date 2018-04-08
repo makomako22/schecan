@@ -31,7 +31,7 @@ class StudentsController < ApplicationController
     student = Student.find(params[:id])
     @student = Student.find(params[:id])
     if student.update(student_params)
-      redirect_to student_path(student.id), notice: "編集が完了しました"
+      redirect_to @student, notice: "編集が完了しました"
     else
       flash.now[:alert] = "必須項目が入力されていません"
       render :edit
