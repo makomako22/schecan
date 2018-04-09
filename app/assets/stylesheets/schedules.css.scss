@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+a {
+  opacity: 1;
+  transition: all 300ms;
+}
+a:hover {
+  opacity: 0.7;
+}
 .nav_w {
   margin: 0 auto;
   max-width: 750px;
@@ -16,9 +23,11 @@
   font-size: 20px;
   color: green;
   }
-.text-left {
+.memo{
   text-align: left!important;
   margin-left: 10px!important;
+  line-height: 1.5em;
+  margin: 0;
 }
 body {
   display: flex;
@@ -29,15 +38,4 @@ body {
 #footer_container{
   flex-grow: 1;
 }
-.dropdown-content {
-  background-color: #fff;
-  margin-top: 65px;
-  display: none;
-  min-width: 100px;
-  max-height: 650px;
-  overflow-y: auto;
-  opacity: 0;
-  position: absolute;
-  z-index: 999;
-  will-change: width, height;
-}
+

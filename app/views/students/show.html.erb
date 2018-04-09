@@ -1,23 +1,10 @@
 <% provide :title, " | #{@student.name} 様" %>
 <div class="student_wrapper wf-roundedmplus1c">
-  <% if flash[:notice] %>
-  <div id="card-alert" class="card green lighten-5">
-    <div class="card-content green-text">
-      <%= flash[:notice] %>
-    </div>
-  </div>
-  <% end %>
-  <% if flash[:alert] %>
-  <div id="card-alert" class="card red lighten-5">
-    <div class="card-content red-text">
-      <%= flash[:alert] %>
-    </div>
-  </div>
-  <% end %>
   <h2 class="form_title">受講生詳細</h2>
+  <%= render partial: 'layouts/flash' %>
   <div class="row">
     <div class="input-field col s12">
-      <table class="striped centered">
+      <table class="t_border striped centered">
         <thead>
           <tr>
             <th>受講期</th>
@@ -58,7 +45,7 @@
     <div class="row">
       <% if @schedules.present? %>
       <div class="input-field col s12">
-        <table class="striped centered">
+        <table class="t_border striped centered">
           <thead>
             <tr>
               <th>状態</th>
@@ -85,13 +72,14 @@
               <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M") %>〜</td>
               <td><%= schedule.mentor %></td>
               <% if schedule.memo.present? %>
-                <td><%= link_to "あり", schedule_path(schedule.id) %></td>
+              <td><%= link_to "あり", schedule_path(schedule.id) %></td>
               <% else %>
-                <td>なし</td>
+              <td>なし</td>
               <% end %>
               <td><%= link_to "詳細", schedule_path(schedule.id) %></td>
               <td><%= link_to "編集", edit_schedule_path(schedule.id) %></td>
-              <td><%= link_to "削除", schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"} %></td>
+              <td><%= link_to "削除", schedule_path(schedule.id), method: :delete, data: { confirm: "本当に削除しますか？"} %>
+              </td>
             </tr>
             <% end %>
           </tbody>
@@ -103,7 +91,7 @@
     <p class="center_line">まだ面談予定はありません。</p>
     <% end %>
     <div id="submit">
-      <div id="submit_button" class="waves-effect waves-light red btn">
+      <div id="back_button" class="waves-effect waves-light red btn">
         <%= link_to "戻る", :back %>
       </div>
     </div>

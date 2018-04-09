@@ -27,10 +27,16 @@
 text-align: center; 
 }
 #submit_button{ 
+  padding: 6px 20px;
+}
+#back_button{ 
   margin: 8px; 
   a {
     color: white;
   }
+}
+.tc {
+  text-transform: none!important;
 }
 .btn-search{
   position: absolute;
@@ -41,11 +47,13 @@ text-align: center;
   -o-transform:translate(0, -50%);
   transform:translate(0, -50%);
   top: 25px;
-  right:-10px;
+  right:485px;
   text-decoration: none;
 }
-table, td, th {
-border: 1px solid;
+.t_border {
+  table, td, th {
+  border: 1px solid;
+  }
 }
 .btn-none {
   border: none;

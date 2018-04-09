@@ -1,24 +1,11 @@
 <div class="form_wrapper wf-roundedmplus1c">
-  <% if flash[:notice] %>
-  <div id="card-alert" class="card green lighten-5">
-    <div class="card-content green-text">
-      <%= flash[:notice] %>
-    </div>
-  </div>
-  <% end %>
-  <% if flash[:alert] %>
-  <div id="card-alert" class="card red lighten-5">
-    <div class="card-content red-text">
-      <%= flash[:alert] %>
-    </div>
-  </div>
-  <% end %>
   <h2 class="form_title"><%= @today.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@today.wday]})") %>の面談予定</h2>
   <p class="center_line">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
+  <%= render partial: 'layouts/flash' %>
   <% if @today_schedules.present? %>
   <div class="row">
     <div class="input-field col s12">
-      <table class="striped centered">
+      <table class="t_border striped centered">
         <thead>
           <tr>
             <th>面談時間</th>
@@ -77,7 +64,7 @@
   <% if @undo_schedules.present? %>
   <div class="row">
     <div class="input-field col s12">
-      <table class="striped centered">
+      <table class="t_border striped centered">
         <thead>
           <tr>
             <th>面談日時</th>
@@ -130,7 +117,7 @@
   <% if @schedules.present? %>
   <div class="row">
     <div class="input-field col s12">
-      <table class="striped centered">
+      <table class="t_border striped centered">
         <thead>
           <tr>
             <th>面談予定日時</th>

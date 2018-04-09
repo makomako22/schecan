@@ -6,6 +6,7 @@ class Student < ActiveRecord::Base
   validates :family_name_kana, presence: true
   validates :first_name_kana, presence: true
   has_many :schedules, dependent: :destroy
+  
   def name
     "#{family_name} #{first_name}"
   end

@@ -24,7 +24,7 @@ class SchedulesController < ApplicationController
     if @schedule.save
       redirect_to root_path, notice: "登録が完了しました"
     else
-      flash.now[:alert] = "同じ日時がすでに登録されているか、必須項目が入力されていません"
+      flash.now[:alert] = "必須項目が入力されていません"
       render :new
     end
   end
@@ -39,7 +39,7 @@ class SchedulesController < ApplicationController
     if schedule.update(schedule_params)
       redirect_to root_path, notice: "変更が完了しました"
     else
-      flash.now[:alert] = "同じ日時がすでに登録されているか、必須項目が入力されていません"
+      flash.now[:alert] = "必須項目が入力されていません"
       render :edit
     end
   end
@@ -53,7 +53,7 @@ class SchedulesController < ApplicationController
   private
 
   def schedule_params
-    params.require(:schedule).permit(:schedule_at, :mentor, :memo, :student_id, :checkbox)
+    params.require(:schedule).permit(Schedule::REGISTRABLE_ATTRIBUTES, :mentor, :memo, :student_id, :checkbox)
   end
 
 end

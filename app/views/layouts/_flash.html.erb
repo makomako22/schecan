@@ -1,0 +1,20 @@
+  <% if flash[:notice] %>
+  <div id="card-alert" class="card green">
+    <div class="card-content white-text">
+      <%= flash[:notice] %>
+    </div>
+    <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <% end %>
+  <% if flash[:alert] %>
+  <div id="card-alert" class="card red">
+    <div class="card-content white-text">
+      <%= flash[:alert] %>
+    </div>
+    <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <% end %>

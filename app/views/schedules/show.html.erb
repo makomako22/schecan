@@ -1,9 +1,10 @@
 <% provide :title, " | 面談スケジュール詳細" %>
 <div class="form_wrapper wf-roundedmplus1c">
   <h2 class="form_title">面談スケジュール詳細</h2>
+  <%= render partial: 'layouts/flash' %>
   <div class="row">
     <div class="input-field col s12">
-      <table class="striped centered">
+      <table class="t_border striped centered">
         <thead>
           <tr>
             <th>状態</th>
@@ -44,7 +45,7 @@
         <tbody>
           <tr>
             <% if @schedule.memo.present? %>
-            <td colspan="8" class="text-left"><%= @schedule.memo %></td>
+            <td colspan="8"><%= simple_format(@schedule.memo, class: "memo") %></td>
             <% else %>
             <td colspan="8">なし</td>
             <% end %>
@@ -54,7 +55,7 @@
     </div>
   </div>
   <div id="submit">
-    <div id="submit_button" class="waves-effect waves-light red btn">
+    <div id="back_button" class="waves-effect waves-light red btn">
       <%= link_to "戻る", :back %>
     </div>
   </div>
