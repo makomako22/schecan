@@ -2,10 +2,12 @@ class SchedulesController < ApplicationController
 
   def index
     @today = DateTime.now.beginning_of_day + 9.hour
-    afterDay = @today + 1.day
-    @today_schedules = Schedule.includes(:student).where("schedule_at >= ?", @today).where("schedule_at < ?", afterDay).order('schedule_at ASC').page(params[:page]).per(10)
-    @undo_schedules = Schedule.includes(:student).where("schedule_at < ?", @today).where(checkbox: 0).order('schedule_at ASC').page(params[:page]).per(10)
-    @schedules = Schedule.includes(:student).where("schedule_at >= ?", afterDay).order('schedule_at ASC')
+    @afterDay = @today + 1.day
+    dayAfterTomorrow = @afterDay + 1.day
+    @today_schedules = Schedule.includes(:student).where("schedule_at >= ?", @today).where("schedule_at < ?", @afterDay).order('schedule_at ASC')
+    @tommorow_schedules = Schedule.includes(:student).where("schedule_at >= ?", @afterDay).where("schedule_at < ?", dayAfterTomorrow).order('schedule_at ASC')
+    @undo_schedules = Schedule.includes(:student).where("schedule_at < ?", @today).where(checkbox: 0).order('schedule_at ASC')  
+    @schedules = Schedule.includes(:student).where("schedule_at >= ?", @afterDay).order('schedule_at ASC')
   end
 
   def show

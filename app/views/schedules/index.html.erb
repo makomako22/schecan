@@ -1,4 +1,4 @@
-<div class="form_wrapper wf-roundedmplus1c">
+<div class="top_wrapper wf-roundedmplus1c">
   <h2 class="form_title"><%= @today.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@today.wday]})") %>の面談予定</h2>
   <p class="center_line">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
   <%= render partial: 'layouts/flash' %>
@@ -41,13 +41,69 @@
             <% else %>
               <td>なし</td>
             <% end %>
-            <td><%= link_to "編集", edit_schedule_path(schedule.id) %></td>
-            <td><%= link_to "削除", schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"} %></td>
+            <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
+            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
-      <%= paginate(@today_schedules) %>
+    </div>
+  </div>
+  <% else %>
+  <div class="row">
+    <div class="input-field col s12">
+      <p class="center_line form_result">本日の面談はありません</p>
+    </div>
+  </div>
+  <% end %>
+  <br>
+  <hr>
+  <h2 class="form_title"><%= @afterDay.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@afterDay.wday]})") %>の面談予定</h2>
+  <% if @tommorow_schedules.present? %>
+  <div class="row">
+    <div class="input-field col s12">
+      <table class="t_border striped centered">
+        <thead>
+          <tr>
+            <th>面談時間</th>
+            <th>受講生名</th>
+            <th>受講期</th>
+            <th>進捗シート</th>
+            <th>前回担当</th>
+            <th>メモ</th>
+            <th>編集</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tommorow_schedules.each do |schedule| %>
+          <tr>
+            <% if schedule.checkbox == false %>
+            <td id="n_time"><%= schedule.schedule_at.strftime("%H:%M〜") %></td>
+            <% elsif schedule.checkbox == true %>
+            <td><span class="green-text">面談完了</span></td>
+            <% else %>
+            <td>-</td>
+            <% end %>
+            <td id="n_name"><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
+            <td><%= schedule.student.term %></td>
+            <% if schedule.student.sheet.present? %>
+            <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
+            <% else %>
+            <td>未登録</td>
+            <% end %>
+            <td><%= schedule.mentor %></td>
+            <% if schedule.memo.present? %>
+              <td><%= link_to "あり", schedule_path(schedule.id) %></td>
+            <% else %>
+              <td>なし</td>
+            <% end %>
+            <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
+            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
   <% else %>
@@ -94,13 +150,12 @@
             <% else %>
               <td>なし</td>
             <% end %>
-            <td><%= link_to "編集", edit_schedule_path(schedule.id) %></td>
-            <td><%= link_to "削除", schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"} %></td>
+            <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
+            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
-      <%= paginate(@undo_schedules) %>
     </div>
   </div>
   <% else %>
@@ -147,8 +202,8 @@
             <% else %>
               <td>なし</td>
             <% end %>
-            <td><%= link_to "編集", edit_schedule_path(schedule.id) %></td>
-            <td><%= link_to "削除", schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"} %></td>
+            <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
+            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
           </tr>
           <% end %>
         </tbody>

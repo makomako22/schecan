@@ -34,8 +34,8 @@
               <%= hidden_field_tag(:student_id, @student.id) %>
               <%= submit_tag "登録する", class:"btn-none" %>
               <% end %></td>
-              <td><%= link_to "編集", edit_student_path(@student) %></td>
-              <td><%= link_to "削除", student_path(@student),method: :delete, data: { confirm: "本当に削除しますか？"} %></td>
+              <td><%= link_to(content_tag(:i, 'edit', class: 'material-icons'), edit_student_path(@student)) %></td>
+              <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), student_path(@student),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
             </tr>
           </tbody>
         </table>
@@ -77,8 +77,8 @@
               <td>なし</td>
               <% end %>
               <td><%= link_to "詳細", schedule_path(schedule.id) %></td>
-              <td><%= link_to "編集", edit_schedule_path(schedule.id) %></td>
-              <td><%= link_to "削除", schedule_path(schedule.id), method: :delete, data: { confirm: "本当に削除しますか？"} %>
+              <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
+              <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id), method: :delete, data: { confirm: "本当に削除しますか？"}) %>
               </td>
             </tr>
             <% end %>
