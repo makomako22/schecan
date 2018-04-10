@@ -30,72 +30,69 @@
             <% else %>
             <td>未登録</td>
             <% end %>
-            <td><%= form_tag(new_schedule_path, method: :get) do %>
-              <%= hidden_field_tag(:student_id, @student.id) %>
-              <%= submit_tag "登録する", class:"btn-none" %>
-              <% end %></td>
-              <td><%= link_to(content_tag(:i, 'edit', class: 'material-icons'), edit_student_path(@student)) %></td>
-              <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), student_path(@student),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            <td><%= link_to "登録する", new_schedule_path(student_id: @student.id) %></td>
+            <td><%= link_to(content_tag(:i, 'edit', class: 'material-icons'), edit_student_path(@student)) %></td>
+            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), student_path(@student),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <h2 class="form_title">面談日程</h2>
-    <div class="row">
-      <% if @schedules.present? %>
-      <div class="input-field col s12">
-        <table class="t_border striped centered">
-          <thead>
-            <tr>
-              <th>状態</th>
-              <th>面談日時</th>
-              <th>前回担当</th>
-              <th>メモ</th>
-              <th>詳細</th>
-              <th>編集</th>
-              <th>削除</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @schedules.each do |schedule| %>
-            <tr>
-              <td>
-                <% if schedule.checkbox == false %>
-                <span class="red-text">未</span>
-                <% elsif schedule.checkbox == true %>
-                <span class="green-text">済</span>
-                <% else %>
-                -
-                <% end %>
-              </td>
-              <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M") %>〜</td>
-              <td><%= schedule.mentor %></td>
-              <% if schedule.memo.present? %>
-              <td><%= link_to "あり", schedule_path(schedule.id) %></td>
-              <% else %>
-              <td>なし</td>
-              <% end %>
-              <td><%= link_to "詳細", schedule_path(schedule.id) %></td>
-              <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
-              <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id), method: :delete, data: { confirm: "本当に削除しますか？"}) %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%= paginate(@schedules) %>
-      </div>
-    </div>
-    <% else %>
-    <p class="center_line">まだ面談予定はありません。</p>
-    <% end %>
-    <div id="submit">
-      <div id="back_button" class="waves-effect waves-light red btn">
-        <%= link_to "戻る", :back %>
-      </div>
-    </div>
-    <br>
   </div>
+  <h2 class="form_title">面談日程</h2>
+  <div class="row">
+    <% if @schedules.present? %>
+    <div class="input-field col s12">
+      <table class="t_border striped centered">
+        <thead>
+          <tr>
+            <th>状態</th>
+            <th>面談日時</th>
+            <th>前回担当</th>
+            <th>メモ</th>
+            <th>詳細</th>
+            <th>編集</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @schedules.each do |schedule| %>
+          <tr>
+            <td>
+              <% if schedule.checkbox == false %>
+              <span class="red-text">未</span>
+              <% elsif schedule.checkbox == true %>
+              <span class="green-text">済</span>
+              <% else %>
+              -
+              <% end %>
+            </td>
+            <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M") %>〜</td>
+            <td><%= schedule.mentor %></td>
+            <% if schedule.memo.present? %>
+            <td><%= link_to "あり", schedule_path(schedule.id) %></td>
+            <% else %>
+            <td>なし</td>
+            <% end %>
+            <td><%= link_to "詳細", schedule_path(schedule.id) %></td>
+            <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
+            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id), method: :delete, data: { confirm: "本当に削除しますか？"}) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate(@schedules) %>
+    </div>
+  </div>
+  <% else %>
+  <p class="center_line">まだ面談予定はありません。</p>
+  <% end %>
+  <div id="submit">
+    <div id="back_button" class="waves-effect waves-light red btn">
+      <%= link_to "戻る", :back %>
+    </div>
+  </div>
+  <br>
+</div>
 </div>
 </div>
