@@ -45,7 +45,9 @@ class StudentsController < ApplicationController
   end
 
   def search
-    @students = Student.where('family_name LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(10)
+    if params[:keyword].present?
+      @students = Student.where('family_name LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(10)
+    end
   end
 
   private

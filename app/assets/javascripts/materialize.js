@@ -8417,7 +8417,7 @@ if (Vel) {
     // Div for Year
     'div', createYearLabel("raw"), settings.klass.year_display) + _.node(
     // Div for short Month
-    'span', createMonthLabel("short_months") , settings.klass.month_display) + _.node(
+    'span', createMonthLabel("short_months"), settings.klass.month_display) + _.node(
     // Div for Day
     'span', createDayLabel() + "日" + _.node('span', createWeekdayLabel(), "picker__weekday-display"), settings.klass.day_display), settings.klass.date_display) +
     // Calendar container
