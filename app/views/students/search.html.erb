@@ -39,10 +39,7 @@
                 <% else %>
                 <td>未登録</td>
                 <% end %>
-                <td><%= form_tag(new_schedule_path, method: :get) do %>
-                  <%= hidden_field_tag(:student_id, student.id) %>
-                  <%= submit_tag "登録する", class:"btn-none" %>
-                  <% end %></td></td>
+                <td><%= link_to "登録する", new_schedule_path(student_id: student.id) %></td>
                 </tr>
                 <% end %>
               </tbody>
