@@ -8415,7 +8415,7 @@ if (Vel) {
     // Date presentation View
     'div', _.node(
     // Div for Year
-    'div', createYearLabel("raw"), settings.klass.year_display) + _.node(
+    'div', createYearLabel(), settings.klass.year_display) + _.node(
     // Div for short Month
     'span', createMonthLabel("short_months"), settings.klass.month_display) + _.node(
     // Div for Day

@@ -8984,10 +8984,10 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .picker__year-display {
-  margin: 0;
   font-size: 1.5rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
+  margin-left: -5px;
 }
 
 /*.picker__box {
