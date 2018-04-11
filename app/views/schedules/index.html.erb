@@ -1,4 +1,11 @@
-<div id="wrap" class="top_wrapper wf-roundedmplus1c">
+ <!-- Start Page Loading -->
+<div id="loader-wrapper">
+  <div id="loader"></div>
+  <div class="loader-section section-left"></div>
+  <div class="loader-section section-right"></div>
+</div>
+<!-- End Page Loading -->
+<div class="top_wrapper wf-roundedmplus1c">
   <h2 class="form_title"><%= @today.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@today.wday]})") %>の面談予定</h2>
   <p class="center_line">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
   <%= render partial: 'layouts/flash' %>
