@@ -28,19 +28,13 @@
 }
 #submit{ 
 text-align: center; 
-  i{
-    padding:0;
+  i {
+    padding: 0;
   }
 }
 #submit_button{ 
-  padding: 6px 20px;
-  width: calc(68px + 4rem); 
-}
-#back_button{ 
-  margin: 8px;
-  a {
-    color: white;
-  }
+  padding: 10px 0;
+  width: calc(32px + 4rem); 
 }
 .tc {
   text-transform: uppercase;
@@ -66,7 +60,4 @@ text-align: center;
   border: none;
   background-color: transparent;
   color: #039be5;
-}
-.center_line {
-  text-align: center;
 }

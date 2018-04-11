@@ -2,7 +2,7 @@
 <div class="student_wrapper wf-roundedmplus1c">
   <%= form_for(@student) do |f| %>
   <h2 class="form_title">受講生編集</h2>
-  <p class="center_line">※「＊」は必須項目</p>
+  <p class="center-align">※「＊」は必須項目</p>
  <%= render partial: 'layouts/flash' %>
   <div class="row">
     <div class="col s12">
@@ -46,11 +46,11 @@
       </div>
       <div class="row">
         <div id="submit">
-          <%= f.submit "送信",id: "submit_button", data: { disable_with: "送信中..." }, class: "btn waves-effect waves-light gradient-45deg-red-pink" %>
+          <%= f.submit "送信",id: "submit_button", data: { disable_with: "送信中..." }, class: "btn waves-effect waves-light" %>
         </div>
       </div>
     </div>
   </div>
   <% end %>
-  <p class="center_line"><%= link_to "戻る", :back %></p>
+  <p class="center-align"><%= link_to "戻る", :back, class: "btn waves-effect waves-red red" %></p><br>
 </div>

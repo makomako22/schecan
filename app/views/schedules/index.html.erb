@@ -1,6 +1,6 @@
 <div class="top_wrapper wf-roundedmplus1c">
   <h2 class="form_title"><%= @today.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@today.wday]})") %>の面談予定</h2>
-  <p class="center_line">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
+  <p class="center-align">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
   <%= render partial: 'layouts/flash' %>
   <% if @today_schedules.present? %>
   <div class="row">
@@ -52,7 +52,7 @@
   <% else %>
   <div class="row">
     <div class="input-field col s12">
-      <p class="center_line form_result">本日の面談はありません</p>
+      <p class="center-align form_result">本日の面談はありません</p>
     </div>
   </div>
   <% end %>
@@ -109,14 +109,14 @@
   <% else %>
   <div class="row">
     <div class="input-field col s12">
-      <p class="center_line form_result">明日の面談はありません</p>
+      <p class="center-align form_result">明日の面談はありません</p>
     </div>
   </div>
   <% end %>
   <br>
   <hr>
   <h2 class="form_title">リスケが必要な面談</h2>
-  <p class="center_line">予定日が過ぎても行われていない面談です。</p>
+  <p class="center-align">予定日が過ぎても行われていない面談です。</p>
   <% if @undo_schedules.present? %>
   <div class="row">
     <div class="input-field col s12">
@@ -161,14 +161,14 @@
   <% else %>
   <div class="row">
     <div class="input-field col s12">
-      <p class="center_line form_result">全ての予定が完了しています。</p>
+      <p class="center-align form_result">全ての予定が完了しています。</p>
     </div>
   </div>
   <% end %>
   <br>
   <hr>
   <h2 class="form_title">明日以降の面談予定</h2>
-  <p class="center_line">メンターが足りない日を確認しておきましょう。</p>
+  <p class="center-align">メンターが足りない日を確認しておきましょう。</p>
   <% if @schedules.present? %>
   <div class="row">
     <div class="input-field col s12">
@@ -213,7 +213,7 @@
   <% else %>
   <div class="row">
     <div class="input-field col s12">
-      <p class="center_line form_result">明日以降の面談予定はありません。</p>
+      <p class="center-align form_result">明日以降の面談予定はありません。</p>
     </div>
   </div>
   <% end %>
