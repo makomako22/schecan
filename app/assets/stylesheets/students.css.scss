@@ -28,12 +28,16 @@
 }
 #submit{ 
 text-align: center; 
+  i{
+    padding:0;
+  }
 }
 #submit_button{ 
   padding: 6px 20px;
+  width: calc(68px + 4rem); 
 }
 #back_button{ 
-  margin: 8px; 
+  margin: 8px;
   a {
     color: white;
   }
