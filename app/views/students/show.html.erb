@@ -18,8 +18,8 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= @student.term %></td>
-            <td><%= @student.name %>（<%= @student.name_kana %>）</td>
+            <td><%= @student.get_student_term(@student) %></td>
+            <td><%= @student.name %><br>（<%= @student.name_kana %>）</td>
             <% if @student.sheet.present? %>
             <td><%= link_to "表示する", @student.sheet, target: "_blank" %></td>
             <% else %>
