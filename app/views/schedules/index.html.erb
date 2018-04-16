@@ -1,4 +1,20 @@
 <div class="top_wrapper wf-roundedmplus1c">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content red lighten-5">
+          <span class="card-title"><b>皆さんへお知らせ</b></span>
+          <p>初回面談時に下記のことを確認してください。</p>
+          <ul>
+            <li>●今後も面談を希望するか</li>
+            <li>●面談の頻度はどれくらいが良いか</li>
+          </ul>
+          <p>面談数が多くなるとメンターの負担が大きくなるので、必要ない方の確認をお願いします。<br>
+          また初回だけでなく、受講から1ヶ月過ぎた方にもこれからも面談を希望するか確認をお願いします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <h2 class="form_title"><%= @today.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@today.wday]})") %>の面談予定</h2>
   <p class="center-align">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
   <%= render partial: 'layouts/flash' %>
@@ -29,7 +45,7 @@
             <td>-</td>
             <% end %>
             <td id="name"><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
-            <td><%= schedule.student.term %></td>
+            <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
             <% if schedule.student.sheet.present? %>
             <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
             <% else %>
@@ -57,7 +73,6 @@
   </div>
   <% end %>
   <br>
-  <hr>
   <h2 class="form_title"><%= @afterDay.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@afterDay.wday]})") %>の面談予定</h2>
   <% if @tommorow_schedules.present? %>
   <div class="row">
@@ -86,7 +101,7 @@
             <td>-</td>
             <% end %>
             <td id="n_name"><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
-            <td><%= schedule.student.term %></td>
+            <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
             <% if schedule.student.sheet.present? %>
             <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
             <% else %>
@@ -114,7 +129,6 @@
   </div>
   <% end %>
   <br>
-  <hr>
   <h2 class="form_title">リスケが必要な面談</h2>
   <p class="center-align">予定日が過ぎても行われていない面談です。</p>
   <% if @undo_schedules.present? %>
@@ -138,7 +152,7 @@
           <tr>
             <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M〜") %></td>
             <td><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
-            <td><%= schedule.student.term %></td>
+            <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
             <% if schedule.student.sheet.present? %>
             <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
             <% else %>
@@ -166,7 +180,6 @@
   </div>
   <% end %>
   <br>
-  <hr>
   <h2 class="form_title">明日以降の面談予定</h2>
   <p class="center-align">メンターが足りない日を確認しておきましょう。</p>
   <% if @schedules.present? %>
@@ -190,7 +203,7 @@
           <tr>
             <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M〜") %></td>
             <td><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
-            <td><%= schedule.student.term %></td>
+            <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
             <% if schedule.student.sheet.present? %>
             <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
             <% else %>

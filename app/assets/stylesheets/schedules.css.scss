@@ -17,9 +17,10 @@ a:hover {
   opacity: 0.7;
 }
 .top_wrapper {
+  min-height: 66vh;
   margin: 0 auto;
-  padding-bottom: 20px;
-  width: 750px;
+  padding: 10px 30px 20px 30px;
+  width: 850px;
   border-left: solid 1px;
   border-right: solid 1px;
 }
@@ -49,4 +50,7 @@ a:hover {
   margin-left: 10px!important;
   line-height: 1.5em;
   margin: 0;
+}
+.card {
+  line-height: 1.5em;
 }
