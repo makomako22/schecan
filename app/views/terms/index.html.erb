@@ -8,7 +8,8 @@
         <thead>
           <tr>
             <th>期間</th>
-            <th>受講生</th>
+            <th>受講生数</th>
+            <th>受講生一覧</th>
             <th>新規受講生登録</th>
             <th>変更</th>
             <th>削除</th>
@@ -18,6 +19,7 @@
           <% @terms.each do |term| %>
           <tr>
             <td><%= term.term_t %></td>
+            <td><%= term.student_count(term) %></td>
             <td><%= link_to "一覧", term_path(term.id) %></td>
             <td><%= link_to "#{term.term_i}期で登録", new_student_path(term: term.term_i) %></td>
             <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_term_path(term.id)) %></td>

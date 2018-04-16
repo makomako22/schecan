@@ -1,4 +1,5 @@
 class TermsController < ApplicationController
+
   def index
     @terms = Term.where('term_i < 1000').order('term_i DESC').page(params[:page]).per(10)
   end
@@ -47,4 +48,5 @@ class TermsController < ApplicationController
   def term_params
     params.require(:term).permit(:term_i, :term_t)
   end
+  
 end
