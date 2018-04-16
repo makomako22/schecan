@@ -28,7 +28,7 @@
             </td>
             <td><%= @schedule.schedule_at.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@schedule.schedule_at.wday]}) %H:%M〜") %></td>
             <td><%= link_to @schedule.student.name, student_path(@schedule.student.id) %></td>
-            <td><%= @schedule.student.term.term_i %></td>
+            <td><%= @schedule.student.term %></td>
             <% if @schedule.student.sheet.present? %>
             <td><%= link_to "表示する", @schedule.student.sheet, target: "_blank" %></td>
             <% else %>
