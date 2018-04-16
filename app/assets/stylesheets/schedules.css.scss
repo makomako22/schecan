@@ -23,7 +23,11 @@ a:hover {
   border-left: solid 1px;
   border-right: solid 1px;
 }
-.nav_w {
+.nav_wrapper {
+  margin: 0 auto;
+  max-width: 750px;
+}
+.footer_wrapper {
   margin: 0 auto;
   max-width: 750px;
   li {

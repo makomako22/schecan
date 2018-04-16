@@ -1,0 +1,33 @@
+<% provide :title, " | 受講期一覧" %>
+<div class="student_wrapper wf-roundedmplus1c">
+  <h2 class="form_title">受講期一覧</h2>
+  <%= render partial: 'layouts/flash' %>
+  <div class="row">
+    <div class="input-field col s12">
+      <table class="t_border striped centered">
+        <thead>
+          <tr>
+            <th>期間</th>
+            <th>受講生</th>
+            <th>新規受講生登録</th>
+            <th>変更</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @terms.each do |term| %>
+          <tr>
+            <td><%= term.term_t %></td>
+            <td><%= link_to "一覧", term_path(term.id) %></td>
+            <td><%= link_to "#{term.term_i}期で登録", new_student_path(term: term.term_i) %></td>
+            <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_term_path(term.id)) %></td>
+            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), term_path(term.id), method: :delete, data: { confirm: "本当に削除しますか？"}) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate(@terms) %>
+    </div>
+  </div>
+</div>

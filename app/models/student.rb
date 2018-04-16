@@ -15,8 +15,4 @@ class Student < ActiveRecord::Base
     "#{family_name_kana} #{first_name_kana}"
   end
 
-  def sheet_present?
-    student.sheet || "なし"
-  end
-
 end

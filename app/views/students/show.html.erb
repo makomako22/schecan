@@ -83,16 +83,15 @@
       </table>
       <%= paginate(@schedules) %>
     </div>
+    <% else %>
+    <p class="center-align">まだ面談予定はありません。</p>
+    <% end %>
   </div>
-  <% else %>
-  <p class="center_line">まだ面談予定はありません。</p>
-  <% end %>
   <br>
   <div id="submit">
     <div id="back_button"">
       <%= link_to "戻る", :back, class: "btn waves-effect waves-light red" %>
     </div>
   </div>
-  <br>
-  <br>
+  <br><br>
 </div>

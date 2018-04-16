@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col s5">
           <%= f.label :"受講期＊" %>
-          <%= f.select :term, [["第56期 2/1(木) 〜 2/28(水)","56"],["第57期 2/16(金) 〜 3/16(金)","57"],["第58期 3/1(木) 〜 3/31(土)","58"],["第59期 3/16(金) 〜 4/15(日)","59"],["第60期 4/16(月) 〜 5/15(火)","60"],["第61期 4/1(日) 〜 4/30(月)","61"]], { prompt: '選択してください' }, {class: "browser-default"} %>
+          <%= f.collection_select :term, @terms, :term_i, :term_t, { prompt: '選択してください' }, {class: "browser-default"} %>
         </div>
       </div>
       <div class="row">

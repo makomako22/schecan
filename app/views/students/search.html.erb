@@ -11,45 +11,45 @@
           <% end %>
         </div>
       </div>
-      <div class="row">
-        <div class="col s12">
-          <% if @students.present? %>
-          <table class="t_border striped centered">
-            <thead>
-              <tr>
-                <th>受講期</th>
-                <th>名前</th>
-                <th>進捗シート</th>
-                <th>TM</th>
-                <th>面談日</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @students.each do |student| %>
-              <tr>
-                <td class="table_center"><%= student.term %></td>
-                <td><%= link_to student.name, student_path(student.id) %></td>
-                <% if student.sheet.present? %>
-                <td><%= link_to "表示する", student.sheet, target: "_blank" %></td>
-                <% else %>
-                <td>未登録</td>
-                <% end %>
-                <% if student.detail.present? %>
-                <td><%= link_to "表示する", student.detail, target: "_blank" %></td>
-                <% else %>
-                <td>未登録</td>
-                <% end %>
-                <td><%= link_to "登録する", new_schedule_path(student_id: student.id) %></td>
-                </tr>
-                <% end %>
-              </tbody>
-            </table>
-            <%= paginate(@students) %>
-            <% else %>
-            <p>該当する受講生はいません。</p>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <% if @students.present? %>
+        <table class="t_border striped centered">
+          <thead>
+            <tr>
+              <th>受講期</th>
+              <th>名前</th>
+              <th>進捗シート</th>
+              <th>TM</th>
+              <th>面談日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @students.each do |student| %>
+            <tr>
+              <td class="table_center"><%= student.term %></td>
+              <td><%= link_to student.name, student_path(student.id) %></td>
+              <% if student.sheet.present? %>
+              <td><%= link_to "表示する", student.sheet, target: "_blank" %></td>
+              <% else %>
+              <td>未登録</td>
+              <% end %>
+              <% if student.detail.present? %>
+              <td><%= link_to "表示する", student.detail, target: "_blank" %></td>
+              <% else %>
+              <td>未登録</td>
+              <% end %>
+              <td><%= link_to "登録する", new_schedule_path(student_id: student.id) %></td>
+            </tr>
             <% end %>
-          </div>
-        </div>
+          </tbody>
+        </table>
+        <%= paginate(@students) %>
+        <% else %>
+        <p>該当する受講生はいません。</p>
+        <% end %>
       </div>
     </div>
   </div>
+</div>

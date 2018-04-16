@@ -1,29 +1,26 @@
-<% provide :title, " | 受講生一覧" %>
-<div class="student_wrapper wf-roundedmplus1c">
-  <h2 class="form_title">受講生一覧</h2>
-  <p class="center-align">名前をクリックすると詳細が表示されます。</p>
+<% provide :title, " | 受講期詳細" %>
+<div class="form_wrapper wf-roundedmplus1c">
+  <h2 class="form_title">受講期詳細</h2>
+    <p class="center-align term_head">〜 <%= @term.term_t %> 〜</p>
   <%= render partial: 'layouts/flash' %>
   <div class="row">
     <div class="input-field col s12">
+      <% if @students.present? %>
       <table class="t_border striped centered">
         <thead>
           <tr>
-            <th>受講期</th>
             <th>名前</th>
             <th>進捗シート</th>
             <th>TM</th>
             <th>面談日</th>
+            <th>編集</th>
+            <th>削除</th>
           </tr>
         </thead>
         <tbody>
           <% @students.each do |student| %>
           <tr>
-            <% if student.term == 1000 %>
-            <td>--</td>
-            <% else %>
-            <td class="table_center"><%= student.term %></td>
-            <% end %>
-            <td><%= link_to student.name, student_path(student.id) %></td>
+            <td><%= link_to student.name, student_path(student.id) %> （<%= student.name_kana %>）</td>
             <% if student.sheet.present? %>
             <td><%= link_to "表示する", student.sheet, target: "_blank" %></td>
             <% else %>
@@ -35,11 +32,24 @@
             <td>未登録</td>
             <% end %>
             <td><%= link_to "登録する", new_schedule_path(student_id: student.id) %></td>
+            <td><%= link_to(content_tag(:i, 'edit', class: 'material-icons'), edit_student_path(student.id)) %></td>
+            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), student_path(student.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
       <%= paginate(@students) %>
+      <% else %>
+      <p class="center-align form_result">該当する受講生はいません</p>
+      <% end %>
     </div>
   </div>
+  <br>
+  <div id="submit">
+    <div id="back_button">
+      <%= link_to "戻る", :back, class: "btn waves-effect waves-light red" %>
+    </div>
+  </div>
+  <br>
+  <br>
 </div>

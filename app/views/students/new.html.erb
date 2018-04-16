@@ -6,12 +6,14 @@
   <%= render partial: 'layouts/flash' %>
   <div class="row">
     <div class="col s12">
+      <% if params[:term].blank? %>
       <div class="row">
         <div class="col s12 m6">
           <%= f.label :"受講期＊" %>
-          <%= f.select :term, [["第56期 2/1(木) 〜 2/28(水)","56"],["第57期 2/16(金) 〜 3/16(金)","57"],["第58期 3/1(木) 〜 3/31(土)","58"],["第59期 3/16(金) 〜 4/15(日)","59"],["第60期 4/1(日) 〜 4/30(月)","60"],["第61期 4/16(月) 〜 5/15(火)","61"],["第62期 5/1(火) 〜 5/31(木)","62"]], { prompt: '選択してください' }, {class: "browser-default"} %>
+          <%= f.collection_select :term, @terms, :term_i, :term_t, { prompt: '選択してください' }, {class: "browser-default"} %>
         </div>
       </div>
+      <% end %>
       <div class="row">
         <div class="input-field col s6">
           <%= f.label :"性(漢字)＊" %>
@@ -44,6 +46,7 @@
           <%= f.text_field :detail %>
         </div>
       </div>
+      <%= f.hidden_field :term %>
       <div class="row">
         <div id="submit">
           <%= f.submit "送信",id: "submit_button", data: { disable_with: "送信中..." }, class: "btn waves-effect waves-light" %>

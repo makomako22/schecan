@@ -12,37 +12,29 @@
 </head>
 <body>
   <!-- Dropdown Structure -->
-
-<!--   <ul id="dropdown1" class="dropdown-content">
+  <ul id="dropdown1" class="dropdown-content">
     <li><%= link_to "受講生一覧", students_path %></li>
     <li><%= link_to "受講生検索", search_students_path %></li>
     <li><%= link_to "受講生登録", new_student_path %></li>
   </ul>
+    <ul id="dropdown2" class="dropdown-content">
+    <li><%= link_to "受講期一覧", terms_path %></li>
+    <li><%= link_to "受講期登録", new_term_path %></li>
+  </ul>
   <nav class="red wf-roundedmplus1c">
-    <div class="nav_w">
+    <div class="nav_wrapper">
       <a href="/" class="brand-logo"><%= image_tag "schecan.svg" %></a>
       <ul class="right hide-on-med-and-down">
         <li><%= link_to "面談日一覧", schedules_path %></li>
-        <li><a class="dropdown-button" data-activates="dropdown1">受講生管理<i class="material-icons right">arrow_drop_down</i></a></li>
-      </ul>
-    </div>
-  </nav> -->
-  <!-- Dropdown Structureここまで -->
-  <nav class="red wf-roundedmplus1c">
-    <div class="nav_w">
-      <a href="/" class="brand-logo"><%= image_tag "schecan.svg" %></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%= link_to "面談日一覧", schedules_path %></li>
-        <li><%= link_to "受講生一覧", students_path %></li>
-        <li><%= link_to "受講生検索", search_students_path %></li>
-        <li><%= link_to "受講生登録", new_student_path %></li>
+        <li><a class="dropdown-button valign-wrapper" data-activates="dropdown1">受講生管理<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button valign-wrapper" data-activates="dropdown2">受講期管理<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
     </div>
   </nav>
   <%= yield %>
   <div id="footer_container"></div>
   <footer class="page-footer">
-    <div class="nav_w">
+    <div class="footer_wrapper">
       <div class="row">
         <div class="col l6 s12">
           <h5 class="footer_img"><%= image_tag "schecan.svg" %></h5>
@@ -60,7 +52,7 @@
       </div>
     </div>
     <div class="footer-copyright">
-      <div class="nav_w">
+      <div class="footer_wrapper">
         © 2018 TECH::CAMP 池袋校
       </div>
     </div>
