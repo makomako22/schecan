@@ -9,7 +9,8 @@
       <table class="t_border striped centered">
         <thead>
           <tr>
-            <th>名前</th>
+            <th>名前（漢字）</th>
+            <th>名前（カナ）</th>
             <th>進捗シート</th>
             <th>TM</th>
             <th>面談日</th>
@@ -20,7 +21,8 @@
         <tbody>
           <% @students.each do |student| %>
           <tr>
-            <td><%= link_to student.name, student_path(student.id) %> （<%= student.name_kana %>）</td>
+            <td><%= link_to student.name, student_path(student.id) %></td>
+            <td><%= student.name_kana %></td>
             <% if student.sheet.present? %>
             <td><%= link_to "表示する", student.sheet, target: "_blank" %></td>
             <% else %>
