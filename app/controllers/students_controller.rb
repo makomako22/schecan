@@ -11,8 +11,8 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
-    @terms = Term.order('term_i ASC').last(5)
     @student.term = params[:term]
+    @terms = Term.order('term_i ASC').last(5)
   end
 
   def create
