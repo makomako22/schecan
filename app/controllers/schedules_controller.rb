@@ -57,7 +57,7 @@ class SchedulesController < ApplicationController
   def destroy
     schedule = Schedule.find(params[:id])
     schedule.destroy
-    redirect_to root_path, notice: "削除が完了しました"
+    redirect_to schedules_path(base_id: @schedule.base_id), notice: "削除が完了しました"
   end
 
   private
