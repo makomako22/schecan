@@ -1,23 +1,14 @@
 <% provide :title, " | 受講生検索" %>
-<div class="top_wrapper wf-roundedmplus1c">
   <h2 class="form_title">受講生検索</h2>
   <p class="center-align">名前をクリックすると詳細が表示されます。</p>
   <div class="row">
-    <div class="input-field col s12">
-      <div class="row">
-        <div class="col s4">
-          <%= form_tag('/students/search', method: :get) do %>
-          <input name="keyword" placeholder="性で検索" type="text" value=""><button class="btn-search btn-flat" title="検索" type="submit"><i class="material-icons">search</i></button></input>
-          <% end %>
-        </div>
-      </div>
-    </div>
     <div class="row">
       <div class="col s12">
         <% if @students.present? %>
         <table class="t_border striped centered">
           <thead>
             <tr>
+              <th>拠点</th>
               <th>受講期</th>
               <th>名前</th>
               <th>進捗シート</th>
@@ -28,6 +19,7 @@
           <tbody>
             <% @students.each do |student| %>
             <tr>
+              <td class="table_center"><%= student.base.name %></td>
               <td class="table_center"><%= student.term %></td>
               <td><%= link_to student.name, student_path(student.id) %></td>
               <% if student.sheet.present? %>

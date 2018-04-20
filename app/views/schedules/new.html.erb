@@ -19,16 +19,21 @@
       <div class="row">
         <div class="col s6">
           <p>記入メンター名<span class="red-text">＊</span></p>
-          <%= f.text_field :mentor, placeholder: "※初回は「初回」と記入" %>
+          <% if @student.schedules.present? %>
+            <%= f.text_field :mentor, placeholder: "メンター名を入力" %>
+          <% else %>
+            <%= f.text_field :mentor, value: "初回" %>
+          <% end %>
         </div>
       </div>
       <div class="row">
         <div class="col s12">
           <p>伝言メモ</p>
-          <%= f.text_area :memo, placeholder: "（例）次回は16時以降をご希望です。\n（例）改行も何行でもできます。", class: "materialize-textarea" %>
+          <%= f.text_area :memo, placeholder: "（例）次回は16時以降をご希望です。\n（例）何行でも改行できます。", class: "materialize-textarea" %>
         </div>
       </div>
       <%= f.hidden_field :student_id %>
+      <%= f.hidden_field :base_id %>
       <div class="row">
         <div id="submit">
           <%= f.submit "送信",id: "submit_button", data: { disable_with: "送信中..." }, class: "btn waves-effect waves-light" %>

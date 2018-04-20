@@ -1,0 +1,28 @@
+<% provide :title, " | 拠点連絡登録" %>
+  <h2 class="form_title"><%= @base.name %>・拠点連絡登録</h2>
+  <p class="center-align">面談日一覧に表示したいメッセージを登録できます。</p>
+  <%= render partial: 'layouts/flash' %>
+  <div class="row">
+    <div class="col s12">
+      <%= form_for(@base) do |f| %>
+      <div class="row">
+        <div class="col s8">
+          <p>タイトル</p>
+          <%= f.text_field :memo_h, placeholder: "メンターへのお知らせ" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 tc">
+          <p>内容</p>
+          <%= f.text_area :memo, placeholder: "（例）日曜日に停電があります。\n（例）改行も何行でもできます。", class: "materialize-textarea" %>
+        </div>
+      </div>
+      <div class="row">
+        <div id="submit">
+          <%= f.submit "送信",id: "submit_button", data: { disable_with: "送信中..." }, class: "btn waves-effect waves-light" %>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+  <% end %>

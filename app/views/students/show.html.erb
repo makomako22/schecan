@@ -1,5 +1,4 @@
 <% provide :title, " | #{@student.name} 様" %>
-<div class="top_wrapper wf-roundedmplus1c">
   <h2 class="form_title">受講生詳細</h2>
   <%= render partial: 'layouts/flash' %>
   <div class="row">
@@ -7,6 +6,7 @@
       <table class="t_border striped centered">
         <thead>
           <tr>
+            <th>拠点</th>
             <th>受講期</th>
             <th>名前</th>
             <th>進捗シート</th>
@@ -18,7 +18,12 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= @student.get_student_term(@student) %></td>
+            <td><%= @student.base.name %></td>
+            <% if @student.term == 1000 %>
+            <td>--</td>
+            <% else %>
+            <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= @student.get_student_term(@student) %>"><%= @student.term %></span></td>
+            <% end %>
             <td><%= @student.name %><br>（<%= @student.name_kana %>）</td>
             <% if @student.sheet.present? %>
             <td><%= link_to "表示する", @student.sheet, target: "_blank" %></td>
@@ -30,7 +35,7 @@
             <% else %>
             <td>未登録</td>
             <% end %>
-            <td><%= link_to "登録する", new_schedule_path(student_id: @student.id) %></td>
+            <td><%= link_to "登録する", new_schedule_path(student_id: @student.id, base_id: @student.base_id) %></td>
             <td><%= link_to(content_tag(:i, 'edit', class: 'material-icons'), edit_student_path(@student)) %></td>
             <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), student_path(@student),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
           </tr>
@@ -93,5 +98,3 @@
       <%= link_to "戻る", :back, class: "btn waves-effect waves-light red" %>
     </div>
   </div>
-  <br><br>
-</div>

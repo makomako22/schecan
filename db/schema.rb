@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413061834) do
+ActiveRecord::Schema.define(version: 20180420011817) do
+
+  create_table "bases", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "memo_h",     limit: 255
+    t.text     "memo",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "schedules", force: :cascade do |t|
     t.integer  "student_id",  limit: 4
@@ -21,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180413061834) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "checkbox"
+    t.integer  "base_id",     limit: 4
   end
 
   create_table "students", force: :cascade do |t|
@@ -33,6 +42,7 @@ ActiveRecord::Schema.define(version: 20180413061834) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "detail",           limit: 255
+    t.integer  "base_id",          limit: 4
   end
 
   create_table "terms", force: :cascade do |t|

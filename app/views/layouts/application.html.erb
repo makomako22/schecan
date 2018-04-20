@@ -14,25 +14,96 @@
   <!-- Dropdown Structure -->
   <ul id="dropdown1" class="dropdown-content">
     <li><%= link_to "受講生一覧", students_path %></li>
-    <li><%= link_to "受講生検索", search_students_path %></li>
     <li><%= link_to "受講生登録", new_student_path %></li>
   </ul>
-    <ul id="dropdown2" class="dropdown-content">
+  <ul id="dropdown2" class="dropdown-content">
     <li><%= link_to "受講期一覧", terms_path %></li>
     <li><%= link_to "受講期登録", new_term_path %></li>
   </ul>
-  <nav class="red wf-roundedmplus1c">
+  <nav class="red wf-roundedmplus1c nav_z">
     <div class="nav_wrapper">
       <a href="/" class="brand-logo"><%= image_tag "schecan.svg" %></a>
       <ul class="right hide-on-med-and-down">
         <li><%= link_to "面談日一覧", schedules_path %></li>
         <li><a class="dropdown-button valign-wrapper" data-activates="dropdown1">受講生管理<i class="material-icons">arrow_drop_down</i></a></li>
         <li><a class="dropdown-button valign-wrapper" data-activates="dropdown2">受講期管理<i class="material-icons">arrow_drop_down</i></a></li>
-        <li><%= link_to "使い方", "https://master.tech-camp.in/admin/knowledges/1142#schecan", target: "_blank" %></li>
       </ul>
     </div>
   </nav>
-  <%= yield %>
+  <div class="top_wrapper wf-roundedmplus1c">
+    <div class="row">
+      <div class="col s3">
+        <div class="tc_logo">
+          <%= image_tag "techcamp.svg" %>
+          <p class="center-align">〜 面談管理アプリ 〜</p>
+        </div>
+          <%= form_tag('/students/search', method: :get) do %>
+          <input name="keyword" placeholder="受講生を性で検索" type="text" value=""><button class="btn-search btn-flat" title="検索" type="submit"><i class="material-icons">search</i></button></input>
+          <% end %>
+        <div class="collection">
+          <div class="collapsible-header red accent-2 white-text valign-wrapper">
+            <i class="material-icons right">account_circle</i>受講生登録
+          </div>
+          <%= link_to new_student_path(base_id: 1), class: "collection-item" do %>新宿<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_student_path(base_id: 2), class: "collection-item" do %>池袋<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_student_path(base_id: 3), class: "collection-item" do %>東京駅前<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_student_path(base_id: 4), class: "collection-item" do %>御茶ノ水<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_student_path(base_id: 5), class: "collection-item" do %>早稻田<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_student_path(base_id: 6), class: "collection-item" do %>名古屋<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_student_path(base_id: 7), class: "collection-item" do %>梅田<i class="material-icons right">chevron_right</i><% end %>
+        </div>
+        <div class="collection">
+          <div class="collapsible-header red accent-2 white-text valign-wrapper">
+            <i class="material-icons right">event</i>面談日一覧
+          </div>
+          <%= link_to schedules_path(base_id: 1), class: "collection-item" do %>新宿<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to schedules_path(base_id: 2), class: "collection-item" do %>池袋<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to schedules_path(base_id: 3), class: "collection-item" do %>東京駅前<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to schedules_path(base_id: 4), class: "collection-item" do %>御茶ノ水<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to schedules_path(base_id: 5), class: "collection-item" do %>早稻田<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to schedules_path(base_id: 6), class: "collection-item" do %>名古屋<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to schedules_path(base_id: 7), class: "collection-item" do %>梅田<i class="material-icons right">chevron_right</i><% end %>
+        </div>
+        <div class="collection">
+          <div class="collapsible-header red accent-2 white-text valign-wrapper">
+            <i class="material-icons right">people</i>受講生一覧
+          </div>
+          <%= link_to basis_path(1), class: "collection-item" do %>新宿<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to basis_path(2), class: "collection-item" do %>池袋<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to basis_path(3), class: "collection-item" do %>東京駅前<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to basis_path(4), class: "collection-item" do %>御茶ノ水<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to basis_path(5), class: "collection-item" do %>早稻田<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to basis_path(6), class: "collection-item" do %>名古屋<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to basis_path(7), class: "collection-item" do %>梅田<i class="material-icons right">chevron_right</i><% end %>
+        </div>
+        <div class="collection">
+          <div class="collapsible-header red accent-2 white-text valign-wrapper">
+            <i class="material-icons right">announcement</i>拠点連絡登録
+          </div>
+          <%= link_to new_basis_path(base_id: 1), class: "collection-item" do %>新宿<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_basis_path(base_id: 2), class: "collection-item" do %>池袋<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_basis_path(base_id: 3), class: "collection-item" do %>東京駅前<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_basis_path(base_id: 4), class: "collection-item" do %>御茶ノ水<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_basis_path(base_id: 5), class: "collection-item" do %>早稻田<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_basis_path(base_id: 6), class: "collection-item" do %>名古屋<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to new_basis_path(base_id: 7), class: "collection-item" do %>梅田<i class="material-icons right">chevron_right</i><% end %>
+        </div>
+        <div class="collection">
+          <div class="collapsible-header red accent-2 white-text valign-wrapper">
+            <i class="material-icons right">open_in_new</i>参照リンク
+          </div>
+          <%= link_to "https://docs.google.com/spreadsheets/d/1X-BI3Vxl6YycM5IbeAIqsPtLDOm5GbB6gcKKLaunaHA/edit#gid=0", target: "_blank", class: "collection-item" do %>進捗シート作成<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to "https://master.tech-camp.in/admin/users", target: "_blank", class: "collection-item" do %>TMユーザー管理<i class="material-icons right">chevron_right</i><% end %>
+          <%= link_to "https://master.tech-camp.in/admin/knowledges/1142#schecan", target: "_blank", class: "collection-item" do %>使い方<i class="material-icons right">chevron_right</i><% end %>
+        </div>
+      </div>
+
+      <div class="col s9">
+        <%= yield %>
+      </div>
+
+    </div>
+  </div>
   <div id="footer_container"></div>
   <footer class="page-footer">
     <div class="footer_wrapper">
@@ -54,7 +125,7 @@
     </div>
     <div class="footer-copyright">
       <div class="footer_wrapper">
-        © 2018 TECH::CAMP 池袋校
+        © 2018 TECH::CAMP
       </div>
     </div>
   </footer>

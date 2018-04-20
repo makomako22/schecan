@@ -19,20 +19,20 @@
           <tr>
             <td>
               <% if @schedule.checkbox == false %>
-              <span class="red-text">未</span>
+                <span class="red-text">未</span>
               <% elsif @schedule.checkbox == true %>
-              <span class="green-text">済</span>
+                <span class="green-text">済</span>
               <% else %>
-              -
+                -
               <% end %>
             </td>
             <td><%= @schedule.schedule_at.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@schedule.schedule_at.wday]}) %H:%M〜") %></td>
             <td><%= link_to @schedule.student.name, student_path(@schedule.student.id) %></td>
             <td><%= @schedule.student.term %></td>
             <% if @schedule.student.sheet.present? %>
-            <td><%= link_to "表示する", @schedule.student.sheet, target: "_blank" %></td>
+              <td><%= link_to "表示する", @schedule.student.sheet, target: "_blank" %></td>
             <% else %>
-            <td>未登録</td>
+              <td>未登録</td>
             <% end %>
             <td><%= @schedule.mentor %></td>
           </tr>
@@ -45,9 +45,9 @@
         <tbody>
           <tr>
             <% if @schedule.memo.present? %>
-            <td colspan="8"><%= simple_format(@schedule.memo, class: "memo") %></td>
+              <td colspan="8"><%= simple_format(@schedule.memo, class: "memo") %></td>
             <% else %>
-            <td colspan="8">なし</td>
+              <td colspan="8">なし</td>
             <% end %>
           </tr>
         </tbody>

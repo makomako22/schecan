@@ -1,245 +1,249 @@
-<div class="top_wrapper wf-roundedmplus1c">
-  <div class="row">
-    <div class="col s12">
-      <div class="card">
-        <div class="card-content red lighten-5">
-          <span class="card-title"><b>皆さんへお知らせ</b></span>
-          <p>初回面談時に下記のことを確認してください。</p>
-          <ul>
-            <li>●今後も面談を希望するか</li>
-            <li>●面談の頻度はどれくらいが良いか</li>
-          </ul>
-          <p>面談数が多くなるとメンターの負担が大きくなるので、必要ない方の確認をお願いします。<br>
-          また初回だけでなく、受講から1ヶ月過ぎた方にもこれからも面談を希望するか確認をお願いします。</p>
-        </div>
-      </div>
-    </div>
+<% if @memo.present? %>  
+<h2 class="schedule_title"><%= @memo.name%>校</h2>
+<% end %> 
+<% if params[:base_id].present? && @memo.memo.present? %>  
+<div class="card">
+  <div class="card-content red lighten-5">
+    <span class="card-title"><b><%= @memo.memo_h %></b></span>
+    <%= simple_format(@memo.memo) %>
   </div>
-  <h2 class="form_title"><%= @today.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@today.wday]})") %>の面談予定</h2>
-  <p class="center-align">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
-  <%= render partial: 'layouts/flash' %>
-  <% if @today_schedules.present? %>
-  <div class="row">
-    <div class="input-field col s12">
-      <table class="t_border striped centered">
-        <thead>
-          <tr>
-            <th>面談時間</th>
-            <th>受講生名</th>
-            <th>受講期</th>
-            <th>進捗シート</th>
-            <th>TM</th>
-            <th>前回担当</th>
-            <th>メモ</th>
-            <th>編集</th>
-            <th>削除</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @today_schedules.each do |schedule| %>
-          <tr>
-            <% if schedule.checkbox == false %>
-            <td id="time"><%= schedule.schedule_at.strftime("%H:%M〜") %></td>
-            <% elsif schedule.checkbox == true %>
-            <td><span class="green-text">面談完了</span></td>
-            <% else %>
-            <td>-</td>
-            <% end %>
-            <td id="name"><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
-            <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
-            <% if schedule.student.sheet.present? %>
-            <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
-            <% else %>
-            <td>未登録</td>
-            <% end %>
-            <% if schedule.student.detail.present? %>
-            <td><%= link_to "表示する", schedule.student.detail, target: "_blank" %></td>
-            <% else %>
-            <td>未登録</td>
-            <% end %>
-            <td><%= schedule.mentor %></td>
-            <% if schedule.memo.present? %>
-              <td><%= link_to "あり", schedule_path(schedule.id) %></td>
-            <% else %>
-              <td>なし</td>
-            <% end %>
-            <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
-            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <% else %>
-  <div class="row">
-    <div class="input-field col s12">
-      <p class="center-align form_result">本日の面談はありません</p>
-    </div>
-  </div>
-  <% end %>
-  <br>
-  <h2 class="form_title"><%= @afterDay.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@afterDay.wday]})") %>の面談予定</h2>
-  <% if @tommorow_schedules.present? %>
-  <div class="row">
-    <div class="input-field col s12">
-      <table class="t_border striped centered">
-        <thead>
-          <tr>
-            <th>面談時間</th>
-            <th>受講生名</th>
-            <th>受講期</th>
-            <th>進捗シート</th>
-            <th>TM</th>
-            <th>前回担当</th>
-            <th>メモ</th>
-            <th>編集</th>
-            <th>削除</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @tommorow_schedules.each do |schedule| %>
-          <tr>
-            <% if schedule.checkbox == false %>
-            <td id="n_time"><%= schedule.schedule_at.strftime("%H:%M〜") %></td>
-            <% elsif schedule.checkbox == true %>
-            <td><span class="green-text">面談完了</span></td>
-            <% else %>
-            <td>-</td>
-            <% end %>
-            <td id="n_name"><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
-            <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
-            <% if schedule.student.sheet.present? %>
-            <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
-            <% else %>
-            <td>未登録</td>
-            <% end %>
-            <% if schedule.student.detail.present? %>
-            <td><%= link_to "表示する", schedule.student.detail, target: "_blank" %></td>
-            <% else %>
-            <td>未登録</td>
-            <% end %>
-            <td><%= schedule.mentor %></td>
-            <% if schedule.memo.present? %>
-              <td><%= link_to "あり", schedule_path(schedule.id) %></td>
-            <% else %>
-              <td>なし</td>
-            <% end %>
-            <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
-            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <% else %>
-  <div class="row">
-    <div class="input-field col s12">
-      <p class="center-align form_result">明日の面談はありません</p>
-    </div>
-  </div>
-  <% end %>
-  <br>
-  <h2 class="form_title">リスケが必要な面談</h2>
-  <p class="center-align">予定日が過ぎても行われていない面談です。</p>
-  <% if @undo_schedules.present? %>
-  <div class="row">
-    <div class="input-field col s12">
-      <table class="t_border striped centered">
-        <thead>
-          <tr>
-            <th>面談日時</th>
-            <th>受講生名</th>
-            <th>受講期</th>
-            <th>進捗シート</th>
-            <th>前回担当</th>
-            <th>メモ</th>
-            <th>編集</th>
-            <th>削除</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @undo_schedules.each do |schedule| %>
-          <tr>
-            <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M〜") %></td>
-            <td><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
-            <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
-            <% if schedule.student.sheet.present? %>
-            <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
-            <% else %>
-            <td>未登録</td>
-            <% end %>
-            <td><%= schedule.mentor %></td>
-            <% if schedule.memo.present? %>
-              <td><%= link_to "あり", schedule_path(schedule.id) %></td>
-            <% else %>
-              <td>なし</td>
-            <% end %>
-            <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
-            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <% else %>
-  <div class="row">
-    <div class="input-field col s12">
-      <p class="center-align form_result">全ての予定が完了しています。</p>
-    </div>
-  </div>
-  <% end %>
-  <br>
-  <h2 class="form_title">明日以降の面談予定</h2>
-  <p class="center-align">メンターが足りない日を確認しておきましょう。</p>
-  <% if @schedules.present? %>
-  <div class="row">
-    <div class="input-field col s12">
-      <table class="t_border striped centered">
-        <thead>
-          <tr>
-            <th>面談予定日時</th>
-            <th>受講生名</th>
-            <th>受講期</th>
-            <th>進捗シート</th>
-            <th>前回担当</th>
-            <th>メモ</th>
-            <th>編集</th>
-            <th>削除</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @schedules.each do |schedule| %>
-          <tr>
-            <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M〜") %></td>
-            <td><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
-            <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
-            <% if schedule.student.sheet.present? %>
-            <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
-            <% else %>
-            <td>未登録</td>
-            <% end %>
-            <td><%= schedule.mentor %></td>
-            <% if schedule.memo.present? %>
-              <td><%= link_to "あり", schedule_path(schedule.id) %></td>
-            <% else %>
-              <td>なし</td>
-            <% end %>
-            <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
-            <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <% else %>
-  <div class="row">
-    <div class="input-field col s12">
-      <p class="center-align form_result">明日以降の面談予定はありません。</p>
-    </div>
-  </div>
-  <% end %>
 </div>
+<% elsif params[:base_id].blank? %>
+<div class="card">
+  <div class="card-content red lighten-5">
+    <span class="card-title"><b>お知らせ</b></span>
+    <p>最初は受講生登録が大変だと思いますので、左メニューの一番上に受講生登録メニューを表示しました。<br>
+      こちらは今週中に削除しますので、それ以降は上メニュー「受講生管理」から「受講生登録」を選び登録をお願いします。<br>
+    不明な点やエラーのお知らせ、こういう機能が欲しいという方は@makoto-arakiまでご連絡ください。</p>
+  </div>
+</div>
+<% end %>
+<%= render partial: 'layouts/flash' %>
+<h2 class="form_title"><%= @today.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@today.wday]})") %>の面談予定</h2>
+<p class="center-align">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
+<% if @today_schedules.present? %>
+<table class="t_border striped centered">
+  <thead>
+    <tr>
+      <% if params[:base_id].blank? %>
+      <th>拠点</th>
+      <% else %>
+      <% end %>
+      <th>面談時間</th>
+      <th>受講生名</th>
+      <th>受講期</th>
+      <th>進捗シート</th>
+      <th>TM</th>
+      <th>前回担当</th>
+      <th>メモ</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @today_schedules.each do |schedule| %>
+    <tr>
+      <% if params[:base_id].blank? %>
+      <td><%= schedule.base.name %></td>
+      <% else %>
+      <% end %>
+      <% if schedule.checkbox == false %>
+      <td id="time"><%= schedule.schedule_at.strftime("%H:%M〜") %></td>
+      <% elsif schedule.checkbox == true %>
+      <td><span class="green-text">面談完了</span></td>
+      <% else %>
+      <td>-</td>
+      <% end %>
+      <td id="name"><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
+      <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
+      <% if schedule.student.sheet.present? %>
+      <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
+      <% else %>
+      <td>未登録</td>
+      <% end %>
+      <% if schedule.student.detail.present? %>
+      <td><%= link_to "表示する", schedule.student.detail, target: "_blank" %></td>
+      <% else %>
+      <td>未登録</td>
+      <% end %>
+      <td><%= schedule.mentor %></td>
+      <% if schedule.memo.present? %>
+      <td><%= link_to "あり", schedule_path(schedule.id) %></td>
+      <% else %>
+      <td>なし</td>
+      <% end %>
+      <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
+      <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="center-align form_result">本日の面談はありません</p>
+<% end %>
+<br>
+<h2 class="form_title"><%= @afterDay.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@afterDay.wday]})") %>の面談予定</h2>
+<% if @tommorow_schedules.present? %>
+<table class="t_border striped centered">
+  <thead>
+    <tr>
+      <% if params[:base_id].blank? %>
+      <th>拠点</th>
+      <% else %>
+      <% end %>
+      <th>面談時間</th>
+      <th>受講生名</th>
+      <th>受講期</th>
+      <th>進捗シート</th>
+      <th>TM</th>
+      <th>前回担当</th>
+      <th>メモ</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tommorow_schedules.each do |schedule| %>
+    <tr>
+      <% if params[:base_id].blank? %>
+      <td><%= schedule.base.name %></td>
+      <% else %>
+      <% end %>
+      <% if schedule.checkbox == false %>
+      <td id="n_time"><%= schedule.schedule_at.strftime("%H:%M〜") %></td>
+      <% elsif schedule.checkbox == true %>
+      <td><span class="green-text">面談完了</span></td>
+      <% else %>
+      <td>-</td>
+      <% end %>
+      <td id="n_name"><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
+      <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
+      <% if schedule.student.sheet.present? %>
+      <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
+      <% else %>
+      <td>未登録</td>
+      <% end %>
+      <% if schedule.student.detail.present? %>
+      <td><%= link_to "表示する", schedule.student.detail, target: "_blank" %></td>
+      <% else %>
+      <td>未登録</td>
+      <% end %>
+      <td><%= schedule.mentor %></td>
+      <% if schedule.memo.present? %>
+      <td><%= link_to "あり", schedule_path(schedule.id) %></td>
+      <% else %>
+      <td>なし</td>
+      <% end %>
+      <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
+      <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="center-align form_result">明日の面談はありません</p>
+<% end %>
+<br>
+<% if params[:base_id].present? %>  
+<h2 class="form_title">リスケが必要な面談</h2>
+<p class="center-align">予定日が過ぎても行われていない面談です。</p>
+<% if @undo_schedules.present? %>
+<table class="t_border striped centered">
+  <thead>
+    <tr>
+      <% if params[:base_id].blank? %>
+      <th>拠点</th>
+      <% else %>
+      <% end %>
+      <th>面談日時</th>
+      <th>受講生名</th>
+      <th>受講期</th>
+      <th>進捗シート</th>
+      <th>前回担当</th>
+      <th>メモ</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @undo_schedules.each do |schedule| %>
+    <tr>
+      <% if params[:base_id].blank? %>
+      <td><%= schedule.base.name %></td>
+      <% else %>
+      <% end %>
+      <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M〜") %></td>
+      <td><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
+      <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
+      <% if schedule.student.sheet.present? %>
+      <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
+      <% else %>
+      <td>未登録</td>
+      <% end %>
+      <td><%= schedule.mentor %></td>
+      <% if schedule.memo.present? %>
+      <td><%= link_to "あり", schedule_path(schedule.id) %></td>
+      <% else %>
+      <td>なし</td>
+      <% end %>
+      <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
+      <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="center-align form_result">全ての予定が完了しています。</p>
+<% end %>
+<br>
+<h2 class="form_title">明日以降の面談予定</h2>
+<p class="center-align">メンターが足りない日を確認しておきましょう。</p>
+<% if @schedules.present? %>
+<table class="t_border striped centered">
+  <thead>
+    <tr>
+      <% if params[:base_id].blank? %>
+      <th>拠点</th>
+      <% else %>
+      <% end %>
+      <th>面談予定日時</th>
+      <th>受講生名</th>
+      <th>受講期</th>
+      <th>進捗シート</th>
+      <th>前回担当</th>
+      <th>メモ</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schedules.each do |schedule| %>
+    <tr>
+      <% if params[:base_id].blank? %>
+      <td><%= schedule.base.name %></td>
+      <% else %>
+      <% end %>
+      <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M〜") %></td>
+      <td><%= link_to schedule.student.name, student_path(schedule.student.id) %></td>
+      <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= schedule.get_term(schedule) %>"><%= schedule.student.term %></span></td>
+      <% if schedule.student.sheet.present? %>
+      <td><%= link_to "表示する", schedule.student.sheet, target: "_blank" %></td>
+      <% else %>
+      <td>未登録</td>
+      <% end %>
+      <td><%= schedule.mentor %></td>
+      <% if schedule.memo.present? %>
+      <td><%= link_to "あり", schedule_path(schedule.id) %></td>
+      <% else %>
+      <td>なし</td>
+      <% end %>
+      <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
+      <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="center-align form_result">明日以降の面談予定はありません。</p>
+<% end %>
+<% end %>

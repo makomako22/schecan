@@ -3,13 +3,17 @@
   <%= form_for(@student) do |f| %>
   <h2 class="form_title">受講生編集</h2>
   <p class="center-align">※「＊」は必須項目</p>
- <%= render partial: 'layouts/flash' %>
+  <%= render partial: 'layouts/flash' %>
   <div class="row">
     <div class="col s12">
       <div class="row">
-        <div class="col s5">
+        <div class="col s6">
           <%= f.label :"受講期＊" %>
           <%= f.collection_select :term, @terms, :term_i, :term_t, { prompt: '選択してください' }, {class: "browser-default"} %>
+        </div>
+        <div class="col s6">
+          <%= f.label :"拠点＊" %>
+          <%= f.collection_select :base_id, @bases, :id, :name, { prompt: '選択してください' }, {class: "browser-default"} %>
         </div>
       </div>
       <div class="row">

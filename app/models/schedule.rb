@@ -1,3 +1,6 @@
+require 'net/http'
+require 'uri'
+
 class Schedule < ActiveRecord::Base
 
   include DatetimeIntegratable
@@ -11,7 +14,9 @@ class Schedule < ActiveRecord::Base
   validates :schedule_at_date, presence: true
   validates :schedule_at_time, presence: true
   validates :mentor, presence: true
+  validates :base_id, presence: true
   belongs_to :student
+  belongs_to :base
 
   def get_term(schedule)
     student = Student.find_by(term: schedule.student.term)
@@ -19,5 +24,6 @@ class Schedule < ActiveRecord::Base
     term = Term.find_by(term_i: s_term)
     term.term_t
   end
+
 end
 

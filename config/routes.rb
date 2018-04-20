@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     end
   end
   resources :terms
+  resources :bases
 end

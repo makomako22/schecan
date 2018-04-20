@@ -1,12 +1,12 @@
 class TermsController < ApplicationController
-
+  before_action :move_to_index, only: [:edit, :destroy]
   def index
     @terms = Term.where('term_i < 1000').order('term_i DESC').page(params[:page]).per(10)
   end
 
   def show
     @term = Term.find(params[:id])
-    @students = Student.where(term: @term.term_i).order('family_name_kana ASC').page(params[:page]).per(10)
+    @students = Student.where(term: @term.term_i).order('base_id ASC').order('family_name_kana ASC').page(params[:page]).per(10)
   end
 
   def new
@@ -47,6 +47,10 @@ class TermsController < ApplicationController
 
   def term_params
     params.require(:term).permit(:term_i, :term_t)
+  end
+
+  def move_to_index
+    redirect_to :root
   end
   
 end
