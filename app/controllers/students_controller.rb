@@ -49,7 +49,7 @@ class StudentsController < ApplicationController
   def destroy
     student = Student.find(params[:id])
     student.destroy
-    redirect_to students_path, notice: "削除が完了しました"
+    redirect_to basis_path(student.base_id), notice: "削除が完了しました"
   end
 
   def search
