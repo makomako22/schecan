@@ -25,16 +25,8 @@
             <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= @student.get_student_term(@student) %>"><%= @student.term %></span></td>
             <% end %>
             <td><%= @student.name %><br>（<%= @student.name_kana %>）</td>
-            <% if @student.sheet.present? %>
-            <td><%= link_to "表示する", @student.sheet, target: "_blank" %></td>
-            <% else %>
-            <td>未登録</td>
-            <% end %>
-            <% if @student.detail.present? %>
-            <td><%= link_to "表示", @student.detail, target: "_blank" %></td>
-            <% else %>
-            <td>未登録</td>
-            <% end %>
+            <td><%= link_to_if(@student.sheet?, "表示する", @student.sheet, target: "_blank") {"未登録"} %></td>
+            <td><%= link_to_if(@student.detail?, "表示する", @student.detail, target: "_blank") {"未登録"} %></td>
             <td><%= link_to "登録する", new_schedule_path(student_id: @student.id, base_id: @student.base_id) %></td>
             <td><%= link_to(content_tag(:i, 'edit', class: 'material-icons'), edit_student_path(@student)) %></td>
             <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), student_path(@student),method: :delete, data: { confirm: "本当に削除しますか？"}) %></td>
@@ -73,11 +65,7 @@
             </td>
             <td><%= schedule.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[schedule.schedule_at.wday]}) %H:%M") %>〜</td>
             <td><%= schedule.mentor %></td>
-            <% if schedule.memo.present? %>
-            <td><%= link_to "あり", schedule_path(schedule.id) %></td>
-            <% else %>
-            <td>なし</td>
-            <% end %>
+            <td><%= link_to_if(schedule.memo?, "あり", schedule_path(schedule.id)) {"なし"} %></td>
             <td><%= link_to "詳細", schedule_path(schedule.id) %></td>
             <td><%= link_to(content_tag(:i, 'restore', class: 'material-icons'), edit_schedule_path(schedule.id)) %></td>
             <td><%= link_to(content_tag(:i, 'delete', class: 'material-icons'), schedule_path(schedule.id), method: :delete, data: { confirm: "本当に削除しますか？"}) %>

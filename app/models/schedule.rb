@@ -1,6 +1,3 @@
-require 'net/http'
-require 'uri'
-
 class Schedule < ActiveRecord::Base
 
   include DatetimeIntegratable
@@ -11,10 +8,7 @@ class Schedule < ActiveRecord::Base
   )
   integrate_datetime_fields :schedule_at
 
-  validates :schedule_at_date, presence: true
-  validates :schedule_at_time, presence: true
-  validates :mentor, presence: true
-  validates :base_id, presence: true
+  validates_presence_of :schedule_at_date, :schedule_at_time, :mentor, :base_id
   belongs_to :student
   belongs_to :base
 
