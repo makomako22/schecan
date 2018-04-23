@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
     @student = Student.new
     @student.term = params[:term]
     @student.base_id = params[:base_id]
-    @terms = Term.order('term_i ASC').last(7)
+    @terms = Term.order('term_i ASC')
     @bases = Base.all
   end
 
