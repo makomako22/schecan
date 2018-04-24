@@ -60,6 +60,9 @@ class SchedulesController < ApplicationController
     redirect_to schedules_path(base_id: schedule.base_id), notice: "削除が完了しました"
   end
 
+  def use
+  end
+
   private
 
   def schedule_params

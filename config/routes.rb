@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root 'schedules#index'
 
-  resources :schedules
+  resources :schedules do
+    collection do
+      get 'use'
+    end
+  end
   resources :students do
     collection do
       get 'search'

@@ -37,7 +37,7 @@ a:hover {
 }
 .footer_wrapper {
   margin: 0 auto;
-  max-width: 750px;
+  max-width: 850px;
   li {
     margin-bottom: 10px;
   }
@@ -55,13 +55,27 @@ a:hover {
   font-size: 30px;
   text-align: center;
 }
+.use_header {
+  font-size: 28px;
+  padding-left: 10px;
+  line-height: 40px;
+  border-left: 10px solid #b71c1c;
+  border-bottom: 2px solid #b71c1c;
+}
+.use_wrap {
+  line-height: 1.5em;
+  img {
+  width: 100%;
+  height: auto;
+}
+}
 .schedule_form {
   padding-left: 10px;
 }
 .form_result {
   font-size: 20px;
   color: green;
-  }
+}
 .memo{
   text-align: left!important;
   margin-left: 10px!important;

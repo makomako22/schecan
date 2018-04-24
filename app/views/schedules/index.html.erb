@@ -12,9 +12,10 @@
 <div class="card">
   <div class="card-content red lighten-5">
     <span class="card-title"><b>お知らせ</b></span>
-    <p>最初は受講生登録が大変だと思いますので、左メニューの一番上に受講生登録メニューを表示しました。<br>
-      こちらは今月中に削除しますので、それ以降は上メニュー「受講生管理」から「受講生登録」を選び登録をお願いします。<br>
-    不明な点やエラーのお知らせ、こういう機能が欲しいという方は@makoto-arakiまでご連絡ください。</p>
+    <p>まず最初に<%= link_to use_schedules_path, class: "collection-item" do %>使い方<% end %>をお読みください。<br>
+      トップページは全校舎の日程が表示されます。<br>
+      slackなどからリンクを貼る場合は各教室の面談日一覧を使用してください。<br>
+      不明な点やエラーのお知らせ、こういう機能が欲しいという方は@makoto-arakiまでご連絡ください。</p>
   </div>
 </div>
 <% end %>
