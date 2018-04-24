@@ -33,7 +33,7 @@
   </nav>
   <div class="top_wrapper wf-roundedmplus1c">
     <div class="row">
-      <div class="col s3">
+      <div class="col s12 m3 hidden-xs">
         <div class="tc_logo">
           <%= image_tag "techcamp.svg" %>
           <p class="center-align">〜 面談管理アプリ 〜</p>
@@ -95,11 +95,10 @@
           </div>
           <%= link_to "https://docs.google.com/spreadsheets/d/1X-BI3Vxl6YycM5IbeAIqsPtLDOm5GbB6gcKKLaunaHA/edit#gid=0", target: "_blank", class: "collection-item" do %>進捗シート作成<i class="material-icons right">chevron_right</i><% end %>
           <%= link_to "https://master.tech-camp.in/admin/users", target: "_blank", class: "collection-item" do %>TMユーザー管理<i class="material-icons right">chevron_right</i><% end %>
-          <%= link_to use_schedules_path, class: "collection-item" do %>使い方<i class="material-icons right">chevron_right</i><% end %>
         </div>
       </div>
 
-      <div class="col s9">
+      <div class="col s12 m9">
         <%= yield %>
       </div>
 
@@ -116,10 +115,16 @@
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text">MENU</h5>
           <ul>
-            <li><%= link_to "面談日一覧", schedules_path, class: "grey-text text-lighten-3" %></li>
+            <li><%= link_to "新宿", schedules_path(base_id: 1), class: "grey-text text-lighten-3" %></li>
+            <li><%= link_to "池袋", schedules_path(base_id: 2), class: "grey-text text-lighten-3" %></li>
+            <li><%= link_to "東京駅前", schedules_path(base_id: 3), class: "grey-text text-lighten-3" %></li>
+            <li><%= link_to "御茶ノ水", schedules_path(base_id: 4), class: "grey-text text-lighten-3" %></li>
+            <li><%= link_to "早稲田", schedules_path(base_id: 5), class: "grey-text text-lighten-3" %></li>
+            <li><%= link_to "名古屋", schedules_path(base_id: 6), class: "grey-text text-lighten-3" %></li>
+            <li><%= link_to "梅田", schedules_path(base_id: 7), class: "grey-text text-lighten-3" %></li>
             <li><%= link_to "受講生一覧", students_path, class: "grey-text text-lighten-3" %></li>
-            <li><%= link_to "受講生検索", search_students_path, class: "grey-text text-lighten-3" %></li>
             <li><%= link_to "受講生登録", new_student_path, class: "grey-text text-lighten-3" %></li>
+            <li><%= link_to "使い方", use_schedules_path, class: "grey-text text-lighten-3" %></li>
           </ul>
         </div>
       </div>
