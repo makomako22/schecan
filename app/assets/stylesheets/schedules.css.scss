@@ -38,9 +38,6 @@ a:hover {
 .footer_wrapper {
   margin: 0 auto;
   max-width: 850px;
-  li {
-    margin-bottom: 10px;
-  }
 }
 .tc_logo {
   height: 130px;
@@ -64,10 +61,13 @@ a:hover {
 }
 .use_wrap {
   line-height: 1.5em;
-  img {
-  width: 100%;
-  height: auto;
-}
+    img {
+    width: 100%;
+    height: auto;
+    }
+    ol {
+      padding-left: 20px;
+    }
 }
 .schedule_form {
   padding-left: 10px;
