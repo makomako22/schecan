@@ -23,6 +23,7 @@
 <h2 class="form_title"><%= @today.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@today.wday]})") %>の面談予定</h2>
 <p class="center-align">面談後は「済」設定と次回の面談の登録を行いましょう。</p>
 <% if @today_schedules.present? %>
+<div class="table-responsive">
 <table class="t_border striped centered">
   <thead>
     <tr>
@@ -71,12 +72,14 @@
     <% end %>
   </tbody>
 </table>
+</div>
 <% else %>
 <p class="center-align form_result">本日の面談はありません</p>
 <% end %>
 <br>
 <h2 class="form_title"><%= @afterDay.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@afterDay.wday]})") %>の面談予定</h2>
 <% if @tommorow_schedules.present? %>
+<div class="table-responsive">
 <table class="t_border striped centered">
   <thead>
     <tr>
@@ -125,6 +128,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
 <% else %>
 <p class="center-align form_result">明日の面談はありません</p>
 <% end %>
@@ -133,6 +137,7 @@
 <h2 class="form_title">リスケが必要な面談</h2>
 <p class="center-align">予定日が過ぎても行われていない面談です。</p>
 <% if @undo_schedules.present? %>
+<div class="table-responsive">
 <table class="t_border striped centered">
   <thead>
     <tr>
@@ -173,6 +178,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
 <% else %>
 <p class="center-align form_result">全ての予定が完了しています</p>
 <% end %>
@@ -180,6 +186,7 @@
 <h2 class="form_title">明日以降の面談予定</h2>
 <p class="center-align">メンターが足りない日を確認しておきましょう。</p>
 <% if @schedules.present? %>
+<div class="table-responsive">
 <table class="t_border striped centered">
   <thead>
     <tr>
@@ -220,6 +227,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
 <% else %>
 <p class="center-align form_result">明日以降の面談予定はありません</p>
 <% end %>

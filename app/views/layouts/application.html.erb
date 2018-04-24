@@ -3,6 +3,7 @@
 <head>
   <meta http-equiv="content-language" content="ja">
   <meta name=”ROBOTS” content=”NOINDEX,NOFOLLOW”>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>SCHE::CAN<%= yield :title %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -20,7 +21,7 @@
     <li><%= link_to "受講期一覧", terms_path %></li>
     <li><%= link_to "受講期登録", new_term_path %></li>
   </ul>
-  <nav class="red wf-roundedmplus1c nav_z">
+  <nav class="red nav_z">
     <div class="nav_wrapper">
       <a href="/" class="brand-logo"><%= image_tag "schecan.svg" %></a>
       <ul class="right hide-on-med-and-down">
@@ -31,9 +32,9 @@
       </ul>
     </div>
   </nav>
-  <div class="top_wrapper wf-roundedmplus1c">
+  <div class="top_wrapper">
     <div class="row">
-      <div class="col s12 m3 hidden-xs">
+      <div class="col m3 s12 hidden-xs">
         <div class="tc_logo">
           <%= image_tag "techcamp.svg" %>
           <p class="center-align">〜 面談管理アプリ 〜</p>
@@ -98,7 +99,7 @@
         </div>
       </div>
 
-      <div class="col s12 m9">
+      <div class="col m9 s12">
         <%= yield %>
       </div>
 
