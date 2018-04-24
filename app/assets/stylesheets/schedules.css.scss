@@ -10,6 +10,10 @@ body {
 th, td {
   white-space: nowrap;
 }
+.t_border
+  th, td {
+    white-space: normal;
+  }
 #footer_container{
   flex-grow: 1;
 }
