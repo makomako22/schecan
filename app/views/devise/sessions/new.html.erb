@@ -1,4 +1,4 @@
-<% provide :title, " | 新規面談日登録" %>
+<% provide :title, " | ログイン" %>
 <div class="login_wrapper wf-roundedmplus1c">
   <h2 class="form_title">ログイン</h2>
   <%= render partial: 'layouts/flash' %>
@@ -18,12 +18,12 @@
           </div>
         </div>
 
-          <% if devise_mapping.rememberable? %>
-          <div>
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me, 'ログイン情報を記憶する' %>
-          </div>
-          <% end %>
+        <% if devise_mapping.rememberable? %>
+        <div>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, 'ログイン情報を記憶する' %>
+        </div>
+        <% end %>
         <br><br>
         <div class="row">
           <div id="submit">
@@ -35,5 +35,5 @@
       </div>
     </div>
   </div>
-</div>
+  <p class="center">パスワードを忘れた方は教室責任者まで。</p>
 </div>
