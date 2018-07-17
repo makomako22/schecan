@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :role])
   end
 
+def edit_password
+	if user_signed_in?
+		if current_user.sign_in_count == 1
+			redirect_to edit_user_path(current_user)
+		end
+	end
+end
+
 end

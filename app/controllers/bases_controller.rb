@@ -1,5 +1,5 @@
 class BasesController < ApplicationController
-
+ before_action :edit_password
   def show
     @students = Student.where(base_id: params[:id]).order('term DESC').order('family_name_kana ASC').page(params[:page]).per(10)
     @base = Base.find_by(id: params[:id])

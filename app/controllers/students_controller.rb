@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-
+  before_action :edit_password
   def index
     @students = Student.includes(:base).order('term DESC').order('family_name_kana ASC').page(params[:page]).per(10)
     @student = Student.find_by(base_id: params[:base_id])

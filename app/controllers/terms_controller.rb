@@ -1,5 +1,5 @@
 class TermsController < ApplicationController
-  
+  before_action :edit_password
   before_action :move_to_index, only: [:edit, :destroy]
   def index
     @terms = Term.where('term_i < 1000').order('term_i DESC').page(params[:page]).per(10)
