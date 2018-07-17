@@ -6,6 +6,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-color: #ffebee;
+  height: 100%;
 }
 th, td {
   white-space: nowrap;
@@ -32,9 +33,14 @@ a:hover {
   background-color: white;
   width: 1050px;
 }
+.login_body {
+  margin: 100px auto;
+  background-color: white;
+}
 .login_wrapper {
   margin: 0 auto;
-  max-width: 300px;
+  width: 300px;
+  background-color: white;
 }
 .side {
   padding: 0 -0.75em;

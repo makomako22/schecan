@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 </head>
 <body>
+  <% if user_signed_in? %>
   <!-- Dropdown Structure -->
   <ul id="dropdown1" class="dropdown-content">
     <li><%= link_to "受講生一覧", students_path %></li>
@@ -28,6 +29,7 @@
     <% end %>
   </ul>
   <% end %>
+  <!-- ここまで -->
   <nav class="red nav_z wf-roundedmplus1c">
     <div class="nav_wrapper">
       <a href="/" class="brand-logo"><%= image_tag "schecan.svg" %></a>
@@ -50,7 +52,7 @@
           <p class="center-align">〜 面談管理アプリ 〜</p>
         </div>
           <%= form_tag('/students/search', method: :get) do %>
-          <input name="keyword" placeholder="受講生を性で検索" type="text" value=""><button class="btn-search btn-flat" title="検索" type="submit"><i class="material-icons">search</i></button></input>
+          <input name="keyword" placeholder="受講生を姓で検索" type="text" value=""><button class="btn-search btn-flat" title="検索" type="submit"><i class="material-icons">search</i></button></input>
           <% end %>
         <div class="collection">
           <div class="collapsible-header red accent-2 white-text valign-wrapper">
@@ -108,7 +110,6 @@
           <%= link_to "https://master.tech-camp.in/admin/users", target: "_blank", class: "collection-item" do %>TMユーザー管理<i class="material-icons right">chevron_right</i><% end %>
         </div>
       </div>
-
       <div class="col m9 s12">
         <%= yield %>
       </div>
@@ -146,5 +147,12 @@
       </div>
     </div>
   </footer>
+  <% else %>
+    <div class="row">
+      <div class="login_body wf-roundedmplus1c col l12 s12">
+        <%= yield %>
+      </div>
+    </div>
+  <% end %>
 </body>
 </html>
