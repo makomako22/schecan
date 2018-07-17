@@ -17,17 +17,27 @@
     <li><%= link_to "受講生一覧", students_path %></li>
     <li><%= link_to "受講生登録", new_student_path %></li>
   </ul>
+  <% if user_signed_in? %>
   <ul id="dropdown2" class="dropdown-content">
-    <li><%= link_to "受講期一覧", terms_path %></li>
-    <li><%= link_to "受講期登録", new_term_path %></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+    <li><%= link_to "パスワード変更", edit_user_path(current_user) %></li>
+    <% if user_signed_in? %>
+      <% if current_user.role == "admin" || current_user.role == "manager" %>
+        <li><%= link_to "管理画面", adminmentor_root_path %></li>
+      <% end %>
+    <% end %>
   </ul>
+  <% end %>
   <nav class="red nav_z wf-roundedmplus1c">
     <div class="nav_wrapper">
       <a href="/" class="brand-logo"><%= image_tag "schecan.svg" %></a>
       <ul class="right hide-on-med-and-down">
         <li><%= link_to "面談日一覧", schedules_path %></li>
         <li><a class="dropdown-button valign-wrapper" data-activates="dropdown1">受講生管理<i class="material-icons">arrow_drop_down</i></a></li>
-        <li><a class="dropdown-button valign-wrapper" data-activates="dropdown2">受講期管理<i class="material-icons">arrow_drop_down</i></a></li>
+        <li><%= link_to "受講期一覧", terms_path %></li>
+        <% if user_signed_in? %>
+          <li><a class="dropdown-button valign-wrapper" data-activates="dropdown2">メンター<%= current_user.username %><i class="material-icons">arrow_drop_down</i></a></li>
+        <% end %>
         <li><%= link_to "使い方", use_schedules_path %></li>
       </ul>
     </div>

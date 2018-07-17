@@ -1,0 +1,16 @@
+current directory: /Users/araki/rails/schecan/vendor/bundle/ruby/2.3.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+/Users/araki/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20180712-6340-ppm5bc.rb extconf.rb
+
+current directory: /Users/araki/rails/schecan/vendor/bundle/ruby/2.3.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" clean
+make: *** No rule to make target `clean'.  Stop.
+
+current directory: /Users/araki/rails/schecan/vendor/bundle/ruby/2.3.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+current directory: /Users/araki/rails/schecan/vendor/bundle/ruby/2.3.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" install
+echo "Nada."
+Nada.

@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  
   def index
     @today = DateTime.now.beginning_of_day + 9.hour
     @afterDay = @today + 1.day

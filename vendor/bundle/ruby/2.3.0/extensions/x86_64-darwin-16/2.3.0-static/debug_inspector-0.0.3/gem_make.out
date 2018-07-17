@@ -1,0 +1,15 @@
+current directory: /Users/araki/rails/schecan/vendor/bundle/ruby/2.3.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+/Users/araki/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20180712-6340-1juzxgz.rb extconf.rb
+creating Makefile
+
+current directory: /Users/araki/rails/schecan/vendor/bundle/ruby/2.3.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /Users/araki/rails/schecan/vendor/bundle/ruby/2.3.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/araki/rails/schecan/vendor/bundle/ruby/2.3.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 debug_inspector.bundle ./.gem.20180712-6340-grqdz0
