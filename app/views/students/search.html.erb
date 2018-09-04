@@ -20,7 +20,11 @@
             <% @students.each do |student| %>
             <tr>
               <td class="table_center"><%= student.base.name %></td>
-              <td class="table_center"><%= student.term %></td>
+              <% if student.term == 1000 %>
+              <td>--</td>
+              <% else %>
+              <td><span class="tooltipped" data-position="bottom" data-tooltip="<%= student.get_student_term(student) %>"><%= student.term %></span></td>
+              <% end %>
               <td><%= link_to student.name, student_path(student.id) %></td>
               <td><%= link_to_if(student.sheet?, "表示する", student.sheet, target: "_blank") {"未登録"} %></td>
               <td><%= link_to_if(student.detail?, "表示する", student.detail, target: "_blank") {"未登録"} %></td>
