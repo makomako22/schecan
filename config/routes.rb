@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :terms, only: [:index, :show, :new]
   resources :bases
   resources :users, only: [:edit ,:update]
+  resources :briefings
 end

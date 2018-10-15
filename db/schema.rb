@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180714085152) do
+ActiveRecord::Schema.define(version: 20181012073338) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 20180714085152) do
     t.text     "memo",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "briefings", force: :cascade do |t|
+    t.datetime "schedule_at"
+    t.string   "mentor",      limit: 255
+    t.integer  "base_id",     limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "schedules", force: :cascade do |t|

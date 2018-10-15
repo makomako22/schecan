@@ -124,3 +124,27 @@ a:hover {
   overflow-x: auto;
   min-height: 0.01%;
 }
+.briefing_icon {
+  font-size: 1.4rem!important;
+   vertical-align: bottom;
+}
+.bottom_icon {
+ vertical-align: bottom;
+}
+.day_detail {
+  font-size: 20px;
+  font-weight: bold;
+  background: linear-gradient(transparent 70%, yellow 70%);
+}
+.briefing_link {
+  text-decoration: underline;
+}
+.briefing {
+  font-size: 18px;
+  font-weight: bold;
+}
+.briefing_attention {
+  font-weight: bold;
+  color: red;
+  border-bottom: double 6px #ff99ab;
+}

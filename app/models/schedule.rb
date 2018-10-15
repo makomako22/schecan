@@ -3,7 +3,6 @@ class Schedule < ActiveRecord::Base
   include DatetimeIntegratable
 
   REGISTRABLE_ATTRIBUTES = %i(
-    name
     schedule_at_date schedule_at_time
   )
   integrate_datetime_fields :schedule_at
