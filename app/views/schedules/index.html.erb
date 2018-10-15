@@ -21,6 +21,19 @@
 <% end %>
 <%= render partial: 'layouts/flash' %>
 <h2 class="form_title"><%= @today.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@today.wday]})") %>の予定</h2>
+<% if @today_briefings.present? %>
+<p class="center"><span class="day_detail">〜 説明会 〜</span></p>
+<% @today_briefings.each do |b| %>
+<p class="center briefing">
+  <% if params[:base_id].blank? %>
+    <%= b.base.name %>校
+  <% end %>
+  　<i class="material-icons briefing_icon">schedule</i><%= b.schedule_at.strftime("%H:%M〜") %>　担当：<%= b.mentor %><% if current_user.role == "admin" || current_user.role == "manager" %>　<%= link_to "【編集】", edit_briefing_path(b) %> <%= link_to "【削除】", briefing_path(b),method: :delete, data: { confirm: "本当に削除しますか？"} %><% end %>
+</p>
+<% end %>
+<p class="center"><span class="briefing_attention"><i class="material-icons bottom_icon">report_problem</i> 説明会後にすること</span></p>
+<p class="center">1.<%= link_to "説明会参加者フォーム記入", "https://docs.google.com/spreadsheets/d/1NZcK5PTqt7fd9B8rJXK6vOqs5rzDpgiQco6q799dUiE/edit#gid=121918679", class: "briefing_link", target: "_blank" %> <i class="material-icons bottom_icon">fast_forward</i> 2.<%= link_to "セールス計画値記入", "https://docs.google.com/spreadsheets/d/1jIH2UNpxztVKERy7QNprplYXRLdorjPR7OiMHXasJBw/edit#gid=1013687224", class: "briefing_link", target: "_blank" %> <i class="material-icons bottom_icon">fast_forward</i> 3.<%= link_to "出欠入力", "https://tech-camp.in/admin/briefings", class: "briefing_link", target: "_blank" %> <i class="material-icons bottom_icon">fast_forward</i> 4.#sales_memberに報告</p>
+<% end %>
 <p class="center"><span class="day_detail">〜 面談 〜</span></p>
 <% if @today_schedules.present? %>
 <div class="table-responsive">
@@ -77,21 +90,16 @@
 <p class="center-align form_result">本日の面談はありません</p>
 <% end %>
 <br>
-<% if @today_briefings.present? %>
-<p class="center"><span class="day_detail">〜 説明会 〜</span></p>
-<% @today_briefings.each do |b| %>
-<p class="center briefing">
-  <% if params[:base_id].blank? %>
-    <%= b.base.name %>校
-  <% end %>
-  　<i class="material-icons briefing_icon">schedule</i><%= b.schedule_at.strftime("%H:%M〜") %>　担当：<%= b.mentor %><% if current_user.role == "admin" || current_user.role == "manager" %>　<%= link_to "【編集】", edit_briefing_path(b) %> <%= link_to "【削除】", briefing_path(b),method: :delete, data: { confirm: "本当に削除しますか？"} %><% end %>
-</p>
-<% end %>
-<p class="center"><span class="briefing_attention"><i class="material-icons bottom_icon">report_problem</i> 説明会後にすること</span></p>
-<p class="center">1.<%= link_to "説明会参加者フォーム記入", "https://docs.google.com/spreadsheets/d/1NZcK5PTqt7fd9B8rJXK6vOqs5rzDpgiQco6q799dUiE/edit#gid=121918679", class: "briefing_link", target: "_blank" %> <i class="material-icons bottom_icon">fast_forward</i> 2.<%= link_to "セールス計画値記入", "https://docs.google.com/spreadsheets/d/1jIH2UNpxztVKERy7QNprplYXRLdorjPR7OiMHXasJBw/edit#gid=1013687224", class: "briefing_link", target: "_blank" %> <i class="material-icons bottom_icon">fast_forward</i> 3.<%= link_to "出欠入力", "https://tech-camp.in/admin/briefings", class: "briefing_link", target: "_blank" %> <i class="material-icons bottom_icon">fast_forward</i> 4.#sales_memberに報告</p>
-<% end %>
 <hr>
 <h2 class="form_title"><%= @afterDay.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[@afterDay.wday]})") %>の予定</h2>
+<% if @tommorow_briefings.present? %>
+  <p class="center"><span class="day_detail">〜 説明会 〜</span></p>
+  <% @tommorow_briefings.each do |b| %>
+    <p class="center">
+      <b><i class="material-icons bottom_icon">schedule</i><%= b.schedule_at.strftime("%H:%M〜") %>　担当：<%= b.mentor %></b><% if current_user.role == "admin" || current_user.role == "manager" %>　<%= link_to "【編集】", edit_briefing_path(b) %> <%= link_to "【削除】", briefing_path(b),method: :delete, data: { confirm: "本当に削除しますか？"} %><% end %>
+    </p>
+  <% end %>
+<% end %>
 <p class="center"><span class="day_detail">〜 面談 〜</span></p>
 <% if @tommorow_schedules.present? %>
 <div class="table-responsive">
@@ -147,14 +155,6 @@
 <p class="center-align form_result">明日の面談はありません</p>
 <% end %>
 <br>
-<% if @tommorow_briefings.present? %>
-<p class="center"><span class="day_detail">〜 説明会 〜</span></p>
-<% @tommorow_briefings.each do |b| %>
-<p class="center">
-  <b><i class="material-icons bottom_icon">schedule</i><%= b.schedule_at.strftime("%H:%M〜") %>　担当：<%= b.mentor %></b><% if current_user.role == "admin" || current_user.role == "manager" %>　<%= link_to "【編集】", edit_briefing_path(b) %> <%= link_to "【削除】", briefing_path(b),method: :delete, data: { confirm: "本当に削除しますか？"} %><% end %>
-</p>
-<% end %>
-<% end %>
 <hr>
 <% if params[:base_id].present? %>  
 <h2 class="form_title">リスケが必要な面談</h2>
@@ -208,6 +208,14 @@
 <br>
 <hr>
 <h2 class="form_title">明日以降の予定</h2>
+<% if @briefings.present? %>
+  <p class="center"><span class="day_detail">〜 説明会 〜</span></p>
+  <% @briefings.each do |b| %>
+    <p class="center">
+      <b><i class="material-icons bottom_icon">schedule</i><%= b.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[b.schedule_at.wday]}) %H:%M〜") %>　担当：<%= b.mentor %></b><% if current_user.role == "admin" || current_user.role == "manager" %>　<%= link_to "【編集】", edit_briefing_path(b) %> <%= link_to "【削除】", briefing_path(b),method: :delete, data: { confirm: "本当に削除しますか？"} %><% end %>
+    </p>
+  <% end %>
+<% end %>
 <p class="center"><span class="day_detail">〜 面談 〜</span></p>
 <p class="center-align">メンターが足りない日を確認しておきましょう。</p>
 <% if @schedules.present? %>
@@ -255,13 +263,5 @@
 </div>
 <% else %>
 <p class="center-align form_result">明日以降の面談予定はありません</p>
-<% end %>
-<% if @briefings.present? %>
-<p class="center"><span class="day_detail">〜 説明会 〜</span></p>
-<% @briefings.each do |b| %>
-<p class="center">
-  <b><i class="material-icons bottom_icon">schedule</i><%= b.schedule_at.strftime("%-m月%d日(#{%w(日 月 火 水 木 金 土)[b.schedule_at.wday]}) %H:%M〜") %>　担当：<%= b.mentor %></b><% if current_user.role == "admin" || current_user.role == "manager" %>　<%= link_to "【編集】", edit_briefing_path(b) %> <%= link_to "【削除】", briefing_path(b),method: :delete, data: { confirm: "本当に削除しますか？"} %><% end %>
-</p>
-<% end %>
 <% end %>
 <% end %>
