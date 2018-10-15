@@ -126,10 +126,13 @@ a:hover {
 }
 .briefing_icon {
   font-size: 1.4rem!important;
-   vertical-align: bottom;
+  vertical-align: bottom;
 }
 .bottom_icon {
  vertical-align: bottom;
+}
+.attention_icon {
+  color: yellow;
 }
 .day_detail {
   font-size: 20px;
@@ -144,7 +147,8 @@ a:hover {
   font-weight: bold;
 }
 .briefing_attention {
+  padding: 4px 6px;
   font-weight: bold;
-  color: red;
-  border-bottom: double 6px #ff99ab;
+  color: #fff;
+  border-radius: 6px;
 }
