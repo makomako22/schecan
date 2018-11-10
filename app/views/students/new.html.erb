@@ -27,10 +27,6 @@
         </div>
         <% end %>
       </div>
-      <div class="col s6">
-          <%= f.label :"メンター＊" %>
-          <%= f.collection_select :term, @mentors, :term_i, :term_t, { prompt: '選択してください' }, {class: "browser-default"} %>
-        </div>
       <div class="row">
         <div class="input-field col s6">
           <%= f.label :"姓(漢字)＊" %>
