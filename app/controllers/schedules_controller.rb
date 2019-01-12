@@ -34,6 +34,7 @@ class SchedulesController < ApplicationController
   end
 
   def create
+    @student = Student.find(params[:schedule][:student_id])
     @schedule = Schedule.new(schedule_params)
     @schedule.checkbox = 0
     if @schedule.save
