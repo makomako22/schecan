@@ -27,7 +27,7 @@ a:hover {
 }
 .top_wrapper {
   min-height: 66vh;
-  margin: 0 auto;
+  margin: 3px auto 0;
   padding: 10px 10px 20px 0;
   background-color: white;
   width: 1050px;
@@ -48,16 +48,9 @@ a:hover {
   margin: 0 auto;
   max-width: 1000px;
 }
-.nav_z_1 {
-  position: relative;
-  z-index: 1;
-}
-.nav_z_2 {
-  position: relative;
-  z-index: 2;
-}
+
 .mar_5 {
-  margin-top: 5px;
+  margin-top: 20px;
 }
 .footer_wrapper {
   margin: 0 auto;
