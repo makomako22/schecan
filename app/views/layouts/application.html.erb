@@ -5,6 +5,7 @@
   <meta name=”ROBOTS” content=”NOINDEX,NOFOLLOW”>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>SCHE::CAN<%= yield :title %></title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -31,15 +32,47 @@
   </ul>
   <% end %>
   <!-- ここまで -->
-  <nav class="red nav_z wf-roundedmplus1c">
+  <nav class="red wf-roundedmplus1c">
     <div class="nav_wrapper">
       <a href="/" class="brand-logo"><%= image_tag "schecan.svg" %></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fas fa-bars"></i></a>
       <ul class="right hide-on-med-and-down">
         <li><%= link_to "面談日一覧", schedules_path %></li>
         <li><a class="dropdown-button valign-wrapper" data-activates="dropdown1">受講生管理<i class="material-icons">arrow_drop_down</i></a></li>
         <li><%= link_to "受講期一覧", terms_path %></li>
         <% if user_signed_in? %>
           <li><a class="dropdown-button valign-wrapper" data-activates="dropdown2">メンター<%= current_user.username %><i class="material-icons">arrow_drop_down</i></a></li>
+        <% end %>
+        <li><%= link_to "使い方", use_schedules_path %></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><%= link_to "面談日一覧", schedules_path %></li>
+        <ul>
+        <li><%= link_to "池袋", schedules_path(base_id: 2) %></li>
+        <li><%= link_to "早稲田", schedules_path(base_id: 5) %></li>
+      </ul>
+        <li>受講生管理
+          <ul>
+            <li><%= link_to "受講生一覧", students_path %></li>
+            <li><%= link_to "受講生登録", new_student_path %></li>
+          </ul>
+        </li>
+        <li><%= link_to "受講期一覧", terms_path %></li>
+        <% if user_signed_in? %>
+          <li>メンター<%= current_user.username %>
+            <% if user_signed_in? %>
+            <ul>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to "パスワード変更", edit_user_path(current_user) %></li>
+              <% if user_signed_in? %>
+                <% if current_user.role == "admin" || current_user.role == "manager" %>
+                  <li><%= link_to "説明会登録", new_briefing_path %></li>
+                  <li><%= link_to "管理画面", adminmentor_root_path %></li>
+                <% end %>
+              <% end %>
+            </ul>
+            <% end %>
+          </li>
         <% end %>
         <li><%= link_to "使い方", use_schedules_path %></li>
       </ul>
@@ -116,7 +149,7 @@
           <%= link_to "https://docs.google.com/presentation/d/17C4LqlN-QC4ZXviCR0Kbc5Tg1KchcSMaTUBqeZj-fQk/edit#slide=id.g439eff444c_2_141", target: "_blank", class: "collection-item" do %>説明会資料<i class="material-icons right">chevron_right</i><% end %>
         </div>
       </div>
-      <div class="col m9 s12">
+      <div class="col m9 s12 mar_5">
         <%= yield %>
       </div>
 
