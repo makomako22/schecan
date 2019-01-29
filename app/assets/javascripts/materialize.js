@@ -8415,11 +8415,11 @@ if (Vel) {
     // Date presentation View
     'div', _.node(
     // Div for Year
-    'div', createYearLabel("raw"), settings.klass.year_display) + _.node('span', createWeekdayLabel() + ', ', "picker__weekday-display") + _.node(
+    'div', createYearLabel("raw"), settings.klass.year_display) + _.node('span') + _.node(
     // Div for short Month
     'span', createMonthLabel("short_months") + ' ', settings.klass.month_display) + _.node(
     // Div for Day
-    'span', createDayLabel(), settings.klass.day_display), settings.klass.date_display) +
+    'span', createDayLabel() + "日" + _.node('span', createWeekdayLabel(), "picker__weekday-display"), settings.klass.day_display), settings.klass.date_display) +
     // Calendar container
     _.node('div', _.node('div', _.node('div', (settings.selectYears ? createMonthLabel() + createYearLabel() : createMonthLabel() + createYearLabel()) + createMonthNav() + createMonthNav(1), settings.klass.header) + _.node('table', tableHead + _.node('tbody', _.group({
       min: 0,
