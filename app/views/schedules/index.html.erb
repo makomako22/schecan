@@ -3,14 +3,14 @@
 <% end %> 
 <% if params[:base_id].present? && @memo.memo? %>  
 <div class="card">
-  <div class="card-content red lighten-5">
+  <div class="card-content indigo lighten-5">
     <span class="card-title"><b><%= @memo.memo_h %></b></span>
     <%= simple_format(@memo.memo) %>
   </div>
 </div>
 <% elsif params[:base_id].blank? %>
 <div class="card">
-  <div class="card-content red lighten-5">
+  <div class="card-content indigo lighten-5">
     <span class="card-title"><b>お知らせ</b></span>
     <p>まず最初に<%= link_to use_schedules_path, class: "collection-item" do %>使い方<% end %>をお読みください。<br>
       トップページは全教室の日程が表示されます。<br>
