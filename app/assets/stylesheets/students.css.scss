@@ -46,6 +46,9 @@ i {
 .tc {
   text-transform: uppercase;
 }
+.search_bar {
+  position: relative;
+}
 .btn-search{
   position: absolute;
   font-size: 30px;
@@ -54,8 +57,8 @@ i {
   -ms-transform:translate(0, -50%);
   -o-transform:translate(0, -50%);
   transform:translate(0, -50%);
-  top: 220px;
-  left: 245px;
+  top: 23px;
+  left: 210px;
   text-decoration: none;
 }
 .t_border {
