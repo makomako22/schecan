@@ -1,5 +1,7 @@
 class SchedulesController < ApplicationController
-   before_action :edit_password
+  before_action :edit_password
+  before_action :check_alert, only: [:index]
+
   def index
     @today = DateTime.now.beginning_of_day
     @afterDay = @today + 1.day
@@ -72,6 +74,15 @@ class SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(Schedule::REGISTRABLE_ATTRIBUTES,:base_id, :mentor, :memo, :student_id, :checkbox)
+  end
+
+  def check_alert
+    @schedules = Schedule.where("schedule_at >= ?", Time.zone.now.beginning_of_day)
+    @schedules.each do |schedule|
+      if schedule.alert_before_interview_time
+        flash.now[:alert] = "面談時間の30分前です。"
+      end
+    end
   end
 
 end
