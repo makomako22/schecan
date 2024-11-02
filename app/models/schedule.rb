@@ -18,5 +18,11 @@ class Schedule < ActiveRecord::Base
     term.term_t
   end
 
-end
+  def alert_before_interview_time
+    current_time = Time.zone.now
+    interview_time = self.schedule_at
+    return false if interview_time.nil?
+    (interview_time - current_time).to_i == 30.minutes
+  end
 
+end
