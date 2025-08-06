@@ -1,11 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+upcoming_notification:
+  student: one
+  schedule_at: <%= 30.minutes.from_now %>
+  mentor: "山田先生"
+  memo: "テスト用のスケジュール"
+  base: one
+  notification_sent: false
+
+already_notified:
+  student: two
+  schedule_at: <%= 30.minutes.from_now %>
+  mentor: "鈴木先生"
+  memo: "既に通知済みのスケジュール"
+  base: two
+  notification_sent: true
+
+past_schedule:
+  student: one
+  schedule_at: <%= 1.hour.ago %>
+  mentor: "田中先生"
+  memo: "過去のスケジュール"
+  base: one
+  notification_sent: false
+
+future_schedule:
+  student: two
+  schedule_at: <%= 2.hours.from_now %>
+  mentor: "佐藤先生"
+  memo: "未来のスケジュール"
+  base: two
+  notification_sent: false

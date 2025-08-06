@@ -1,0 +1,25 @@
+<%= @mentor %>さん
+
+お疲れ様です。
+
+スケジュール通知をお送りします。
+
+■ 学生情報
+氏名: <%= @student.family_name %> <%= @student.first_name %>
+氏名（カナ）: <%= @student.family_name_kana %> <%= @student.first_name_kana %>
+
+■ スケジュール情報
+日時: <%= @schedule_time %>
+拠点: <%= @base.name %>
+メンター: <%= @mentor %>
+
+■ 詳細
+<% if @schedule.memo.present? %>
+メモ: <%= @schedule.memo %>
+<% end %>
+
+このスケジュールが30分後に開始されます。
+準備をお願いします。
+
+---
+この通知は自動送信されています。

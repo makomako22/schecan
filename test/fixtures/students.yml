@@ -1,11 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  term: 1
+  family_name: "田中"
+  first_name: "太郎"
+  family_name_kana: "タナカ"
+  first_name_kana: "タロウ"
+  sheet: "学習シート1"
+  detail: "詳細1"
+  base: one
+  iceberg: "アイスバーグ1"
+
+two:
+  term: 2
+  family_name: "佐藤"
+  first_name: "花子"
+  family_name_kana: "サトウ"
+  first_name_kana: "ハナコ"
+  sheet: "学習シート2"
+  detail: "詳細2"
+  base: two
+  iceberg: "アイスバーグ2"
