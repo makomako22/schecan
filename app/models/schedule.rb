@@ -23,9 +23,9 @@ class Schedule < ActiveRecord::Base
     return false if notification_sent?
     return false if schedule_at.nil?
     
-    # Check if the schedule is exactly 30 minutes away (with 1 minute tolerance)
+    # Check if the schedule is approximately 30 minutes away (with 1.5 minute tolerance)
     time_until_schedule = (schedule_at - Time.current) / 1.minute
-    time_until_schedule >= 29 && time_until_schedule <= 31
+    time_until_schedule >= 28.5 && time_until_schedule <= 31.5
   end
 
   # Send notification and mark as sent
@@ -43,7 +43,7 @@ class Schedule < ActiveRecord::Base
   # Class method to find schedules that need notifications
   def self.needing_notification
     where(notification_sent: false)
-      .where('schedule_at > ? AND schedule_at <= ?', 29.minutes.from_now, 31.minutes.from_now)
+      .where('schedule_at > ? AND schedule_at <= ?', 28.5.minutes.from_now, 31.5.minutes.from_now)
   end
 
 end
